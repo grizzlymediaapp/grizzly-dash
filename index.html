@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample report - TikTok Shop monthly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1e2a36; --navy-2:#27343f; --navy-3:#3a4a58;
+  --orange:#faa22a; --orange-dim:#fdf0dc; --orange-ink:#8a5a10;
+  --white:#fff; --page:#f1f3f5; --line:#e3e6e9; --line-lt:#edf0f2;
+  --muted:#68727c; --muted-lt:#98a2ab;
+  --pos:#1e6b4e; --neg:#a0503f;
+  --card:0 1px 2px rgba(30,42,54,.05), 0 1px 10px rgba(30,42,54,.04);
+  --maxw:1340px; --nav:58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--navy);background:var(--page);
+  line-height:1.5;font-size:14.5px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px}
+.tn{font-variant-numeric:tabular-nums}
+img{display:block}
+button{font-family:inherit}
+
+/* ---------- sticky nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--navy);
+  box-shadow:0 1px 0 rgba(255,255,255,.07)}
+.nav-in{display:flex;align-items:center;gap:26px;height:var(--nav)}
+.brand{display:flex;align-items:center;gap:9px;flex:none}
+.brand img{height:26px;width:auto}
+.brand b{color:#fff;font-weight:600;font-size:14.5px;letter-spacing:-.01em}
+.nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{color:var(--muted-lt);text-decoration:none;font-size:12.5px;padding:7px 11px;
+  border-radius:4px;white-space:nowrap;transition:color .15s,background .15s}
+.nav-links a:hover{color:#fff}
+.nav-links a.on{color:var(--navy);background:var(--orange);font-weight:500}
+.nav-tag{flex:none;background:var(--orange);color:var(--navy);font-size:12px;font-weight:600;
+  padding:5px 13px;border-radius:14px;white-space:nowrap}
+.nav-client{flex:none;color:#fff;font-size:12.5px;font-weight:500;letter-spacing:.01em}
+
+/* ---------- section scaffolding ---------- */
+.sec{padding:40px 0 4px;scroll-margin-top:calc(var(--nav) + 14px)}
+.eyebrow{display:flex;align-items:center;gap:7px;font-size:10.5px;font-weight:600;
+  letter-spacing:.09em;color:var(--orange-ink);text-transform:uppercase;margin-bottom:9px}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.sec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.sec .sub{font-size:13px;color:var(--muted);margin-top:5px;max-width:78ch}
+.sec-body{margin-top:20px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:7px;box-shadow:var(--card)}
+.card-pad{padding:20px 22px}
+.card-h{padding:15px 22px;border-bottom:1px solid var(--line-lt);display:flex;
+  align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.card-h h3{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.card-h span{font-size:12px;color:var(--muted)}
+.up{color:var(--pos);font-weight:500}
+.down{color:var(--neg);font-weight:500}
+.flat{color:var(--muted-lt)}
+
+/* ---------- KPI cards ---------- */
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kcard{background:var(--white);border:1px solid var(--line);border-radius:7px;
+  box-shadow:var(--card);padding:17px 19px 16px;border-top:3px solid var(--orange)}
+.kcard.alt{border-top-color:var(--navy-3)}
+.klabel{font-size:11.5px;color:var(--muted);font-weight:500;margin-bottom:8px}
+.kval{font-size:31px;font-weight:600;letter-spacing:-.035em;line-height:1}
+.kfoot{font-size:12px;margin-top:8px}
+.kgrid6{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:12px}
+.kmini{background:var(--white);border:1px solid var(--line);border-radius:6px;
+  box-shadow:var(--card);padding:13px 15px}
+.kmini .klabel{font-size:11px;margin-bottom:6px}
+.kmini .kval{font-size:20px;font-weight:600}
+.kmini .kfoot{font-size:11.5px;margin-top:5px}
+
+/* ---------- video cards ---------- */
+.wall{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:stretch}
+.vc{background:var(--white);border:1px solid var(--line);border-radius:7px;box-shadow:var(--card);
+  overflow:hidden;display:flex;flex-direction:column;height:100%}
+.vc-img{position:relative;width:100%;aspect-ratio:3/4;flex:none;padding:0;border:0;
+  background:var(--navy);cursor:pointer;display:block;overflow:hidden}
+.vc-img img{width:100%;height:100%;object-fit:cover}
+.vc-rank{position:absolute;top:9px;left:9px;width:23px;height:23px;border-radius:50%;
+  background:var(--orange);color:var(--navy);font-size:11.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.vc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vc-play i{width:42px;height:42px;border-radius:50%;background:rgba(250,162,42,.95);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.28)}
+.vc-play i::after{content:"";border-left:13px solid var(--navy);
+  border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.vc-img:focus-visible{outline:2px solid var(--orange);outline-offset:-3px}
+.vc-body{padding:12px 13px 13px;display:flex;flex-direction:column;flex:1}
+.vc-top{display:flex;align-items:center;justify-content:space-between;gap:7px;margin-bottom:7px}
+.vc-handle{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vc-tag{font-size:9.5px;padding:3px 7px;border-radius:9px;background:var(--orange-dim);
+  color:var(--orange-ink);font-weight:600;white-space:nowrap;flex:none}
+.vc-cap{font-size:11.5px;color:var(--muted);line-height:1.45;margin-bottom:11px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  height:2.9em;flex:none}
+.vc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 8px;padding-top:11px;
+  border-top:1px solid var(--line-lt);margin-top:auto}
+.vc-m-l{font-size:9.5px;color:var(--muted);letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.vc-m-v{font-size:15px;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+.vc-m-v.hl{color:var(--orange-ink)}
+.vc-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-top:11px;padding-top:10px;border-top:1px solid var(--line-lt)}
+.vc-date{font-size:10.5px;color:var(--muted);background:var(--page);padding:3px 8px;border-radius:3px}
+.vc-link{font-size:11px;color:var(--navy);text-decoration:none;font-weight:600}
+.vc-link:hover{color:var(--orange-ink)}
+
+/* ---------- tables ---------- */
+.tb{width:100%;border-collapse:collapse;font-size:12.5px}
+.tb th{font-size:10.5px;font-weight:600;color:var(--muted);text-align:left;letter-spacing:.05em;
+  text-transform:uppercase;padding:12px 12px 12px 0;background:var(--page);white-space:nowrap}
+.tb th:first-child{padding-left:22px;border-radius:0}
+.tb th:last-child{padding-right:22px}
+.tb td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line-lt);vertical-align:middle}
+.tb td:first-child{padding-left:22px}
+.tb td:last-child{padding-right:22px}
+.tb tbody tr:last-child td{border-bottom:0}
+.tb tbody tr:hover td{background:#fafbfc}
+.tb .r{text-align:right}
+.tb tfoot td{border-top:1px solid var(--line);border-bottom:0;font-weight:600;background:var(--page)}
+.rank{color:var(--muted-lt);font-size:11.5px;font-weight:600}
+.hide-row{display:none}
+.more{width:100%;border:0;border-top:1px solid var(--line-lt);background:var(--white);
+  padding:12px;font-size:12.5px;color:var(--navy);font-weight:600;cursor:pointer;
+  border-radius:0 0 7px 7px}
+.more:hover{background:var(--page);color:var(--orange-ink)}
+
+.vt-thumb{width:40px;height:53px;object-fit:cover;border-radius:4px;flex:none}
+.tb tbody tr.clk{cursor:pointer}
+.tb tbody tr.clk:hover td{background:#f3f6f9}
+.vt-thumb-w{position:relative;width:40px;height:53px}
+.vt-thumb-w::after{content:'';position:absolute;inset:0;border-radius:4px;background:rgba(30,42,54,.34) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23faa22a'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/14px no-repeat;opacity:0;transition:opacity .12s}
+.tb tbody tr.clk:hover .vt-thumb-w::after{opacity:1}
+.vt-cre{display:flex;align-items:center;gap:9px}
+.vt-ava{width:26px;height:26px;border-radius:50%;object-fit:cover;flex:none}
+.vt-h{font-weight:600}
+.vt-h a{color:var(--navy);text-decoration:none}
+.vt-h a:hover{color:var(--orange-ink)}
+.vt-sub{font-size:10.5px;color:var(--muted-lt);font-weight:400}
+.vt-desc{color:var(--muted);max-width:32ch;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.clip{max-width:24ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.pr-cell{display:flex;align-items:center;gap:11px}
+.pr-img{width:38px;height:38px;object-fit:cover;border-radius:4px;border:1px solid var(--line-lt);flex:none}
+.pr-name{font-weight:600;max-width:30ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr-meta{font-size:10.5px;color:var(--muted-lt);margin-top:1px}
+.split{height:4px;display:flex;border-radius:2px;overflow:hidden;background:var(--line-lt);width:110px}
+.minibar{height:4px;background:var(--line-lt);border-radius:2px;width:100%;max-width:120px;
+  margin-top:5px;overflow:hidden}
+.minibar i{display:block;height:100%;background:var(--orange)}
+.lv-b{width:23px;height:19px;border-radius:3px;font-size:10px;font-weight:700;
+  display:inline-flex;align-items:center;justify-content:center;color:var(--navy);margin-right:8px}
+.pct{color:var(--muted-lt);font-size:10.5px;margin-left:5px}
+
+/* ---------- charts ---------- */
+.legend{display:flex;gap:18px;font-size:11.5px;color:var(--muted);flex-wrap:wrap;margin-top:12px}
+.legend span{display:flex;align-items:center;gap:6px}
+.lk{width:10px;height:10px;border-radius:2px;flex:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.coh{width:100%;border-collapse:separate;border-spacing:3px;font-size:11.5px}
+.coh th{font-size:10px;color:var(--muted);font-weight:600;padding:0 0 3px;text-align:center;
+  letter-spacing:.05em;text-transform:uppercase}
+.coh th.l,.coh td.l{text-align:left}
+.coh td{text-align:center;padding:6px 3px;border-radius:3px;background:var(--page);color:var(--muted-lt)}
+.coh td.on{color:var(--navy);font-weight:600}
+.coh td.l{background:none;font-weight:600;color:var(--navy);white-space:nowrap;font-size:11.5px}
+.coh td.n{background:none;color:var(--muted)}
+
+/* ---------- strips ---------- */
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.scard{background:var(--white);border:1px solid var(--line);border-radius:7px;
+  box-shadow:var(--card);padding:15px 17px;border-left:3px solid var(--navy-3)}
+.scard.acc{border-left-color:var(--orange)}
+.s-l{font-size:11px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.s-v{font-size:24px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.s-d{font-size:11.5px;margin-top:6px}
+
+/* ---------- notices ---------- */
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px;max-width:100ch}
+.warn{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--orange);
+  border-radius:7px;box-shadow:var(--card);padding:16px 19px;font-size:12.5px;color:var(--muted)}
+.warn b{color:var(--navy);font-weight:600}
+
+/* ---------- takeaways ---------- */
+.hero-card{background:var(--navy);border-radius:8px;padding:30px 32px;color:#fff;
+  position:relative;overflow:hidden}
+.hero-card::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+  border-radius:50%;background:rgba(250,162,42,.10)}
+.hc-e{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--orange);
+  font-weight:600;margin-bottom:12px;position:relative}
+.hc-t{font-size:23px;font-weight:500;letter-spacing:-.02em;line-height:1.32;max-width:38ch;position:relative}
+.hc-t b{font-weight:600;color:var(--orange)}
+.hc-b{font-size:13px;color:#c3cbd2;margin-top:14px;max-width:84ch;line-height:1.65;position:relative}
+.hc-s{display:flex;gap:40px;margin-top:24px;padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.15);flex-wrap:wrap;position:relative}
+.hc-s-v{font-size:23px;font-weight:600;letter-spacing:-.03em}
+.hc-s-l{font-size:11px;color:#98a2ab;margin-top:3px}
+.tcards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.tcard{background:var(--white);border:1px solid var(--line);border-radius:7px;box-shadow:var(--card);
+  padding:18px 19px;display:flex;flex-direction:column}
+.tc-tag{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:9px;background:var(--orange-dim);color:var(--orange-ink);
+  align-self:flex-start;margin-bottom:11px}
+.tc-t{font-size:13.5px;font-weight:600;line-height:1.35}
+.tc-b{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.55;flex:1}
+.tc-act{margin-top:13px;padding:10px 12px;background:var(--page);border-left:2px solid var(--orange);
+  font-size:11.5px;color:var(--navy);line-height:1.5;border-radius:0 3px 3px 0}
+.rec{display:flex;gap:10px;align-items:center;margin-top:12px;padding-top:11px;
+  border-top:1px solid var(--line-lt)}
+.rec input{appearance:none;width:16px;height:16px;border:1.5px solid var(--navy);border-radius:3px;
+  flex:none;cursor:pointer;background:#fff;position:relative}
+.rec input:checked{background:var(--orange);border-color:var(--orange)}
+.rec input:checked::after{content:"";position:absolute;left:4.5px;top:1px;width:4px;height:8px;
+  border:solid var(--navy);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.rec label{font-size:11.5px;color:var(--muted);cursor:pointer;font-weight:500}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;background:rgba(18,26,34,.94);display:none;z-index:99;
+  align-items:center;justify-content:center;padding:24px}
+.lb.on{display:flex}
+.lb iframe{width:340px;height:604px;max-height:84vh;border:0;border-radius:8px;background:#000}
+.lb-in{position:relative}
+.lb-x{position:absolute;top:-40px;right:0;background:none;border:0;color:#fff;font-size:26px;
+  cursor:pointer;line-height:1;padding:4px}
+.lb-x:focus-visible{outline:2px solid var(--orange)}
+
+.foot{background:var(--navy);color:#98a2ab;padding:26px 0 36px;font-size:11.5px;
+  line-height:1.7;margin-top:46px}
+.scroll{overflow-x:auto}
+
+@media(max-width:1200px){
+  .wall{grid-template-columns:repeat(3,1fr)}
+  .wall .vc:nth-child(n+4){display:none}
+  .kgrid6{grid-template-columns:repeat(3,1fr)}
+  .tcards{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(3,1fr)}
+  .two{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .wall{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .nav-client{display:none}
+}
+@media(max-width:560px){
+  .wrap{padding:0 16px}
+  .kgrid,.kgrid6,.tcards,.strip{grid-template-columns:1fr}
+  .wall{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== v5 additions ===== */
+:root{--teal:#2f7d62}
+.kmini{border-top:3px solid var(--line)}
+.kmini{border-top-color:var(--teal)}
+
+/* header theme variants */
+body.th-a .card-h{background:var(--orange);border-bottom-color:#eb9421}
+body.th-a .card-h h3{color:var(--navy)}
+body.th-a .card-h span{color:#7a4f0d}
+body.th-a .tb th{background:var(--navy);color:#c3cbd2}
+body.th-a .tb th.s:hover{color:#fff}
+body.th-b .card-h{background:var(--navy);border-bottom-color:var(--navy)}
+body.th-b .card-h h3{color:#fff}
+body.th-b .card-h span{color:#98a2ab}
+body.th-b .tb th{background:var(--page);color:var(--muted)}
+body.th-c .tb th{background:var(--orange-dim);color:var(--orange-ink)}
+body.th-a .tb tfoot td,body.th-b .tb tfoot td,body.th-c .tb tfoot td{background:var(--page)}
+
+/* chips */
+.chips{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.chip{font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:11px;
+  background:var(--page);color:var(--navy);border:1px solid var(--line);
+  display:inline-flex;align-items:center;white-space:nowrap}
+.chip b{font-weight:700;margin-left:5px}
+.chip .dot{width:7px;height:7px;border-radius:50%;margin-right:6px;background:currentColor;flex:none}
+.chip.g{background:#e7f3ec;border-color:#c7e4d4;color:#1e6b4e}
+.chip.a{background:#fdf0dc;border-color:#f6ddb4;color:#8a5a10}
+.chip.r{background:#fbe8e4;border-color:#f2cbc0;color:#a0503f}
+body.th-a .card-h .chip{background:rgba(255,255,255,.85);border-color:rgba(255,255,255,.6)}
+body.th-b .card-h .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff}
+
+/* sortable */
+.tb th.s{cursor:pointer;user-select:none}
+.tb th.s::after{content:"\2195";opacity:.4;margin-left:5px;font-size:10px}
+.tb th.s.asc::after{content:"\25B2";opacity:1}
+.tb th.s.desc::after{content:"\25BC";opacity:1}
+
+/* video card extras */
+.vc-sect{font-size:8.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted-lt);margin:11px 0 7px}
+.vc-grid.nb{border-top:0;padding-top:0;margin-top:0}
+.vc-prod{display:flex;align-items:center;gap:8px;margin-top:11px;padding-top:10px;
+  border-top:1px solid var(--line-lt)}
+.vc-prod img{width:22px;height:22px;border-radius:3px;object-fit:cover;
+  border:1px solid var(--line-lt);flex:none}
+.vc-prod span{font-size:10.5px;color:var(--muted);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.vc-grid{margin-top:0}
+
+/* theme switcher */
+.themer{display:flex;align-items:center;gap:5px;flex:none}
+.themer span{font-size:10.5px;color:var(--muted-lt)}
+.themer button{width:24px;height:22px;border-radius:4px;border:1px solid rgba(255,255,255,.25);
+  background:transparent;color:#c3cbd2;font-size:11px;font-weight:600;cursor:pointer}
+.themer button.on{background:var(--orange);color:var(--navy);border-color:var(--orange)}
+
+/* video modal */
+.mv{position:fixed;inset:0;background:rgba(14,20,26,.92);display:none;z-index:99;
+  overflow-y:auto;padding:26px 20px}
+.mv.on{display:block}
+.mv-card{max-width:1040px;margin:0 auto;background:#fff;border-radius:10px;
+  overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.mv-x{position:absolute;top:12px;right:14px;z-index:3;background:rgba(30,42,54,.1);border:0;
+  width:32px;height:32px;border-radius:50%;font-size:19px;cursor:pointer;color:var(--navy);line-height:1}
+.mv-x:hover{background:rgba(30,42,54,.2)}
+.mv-grid{display:grid;grid-template-columns:340px 1fr}
+.mv-left{background:#0d1319;padding:20px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px}
+.mv-left video{width:298px;aspect-ratio:9/16;border-radius:8px;background:#000;
+  display:block;max-height:74vh;object-fit:contain}
+.mv-left iframe{width:300px;height:620px;max-height:74vh;border:0;border-radius:8px;background:#000}
+.mv-warn{font-size:10.5px;color:#98a2ab;text-align:center}
+.mv-warn a{color:var(--orange)}
+.mv-right{padding:22px 26px 26px;min-width:0}
+.mv-head{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.mv-ava{width:42px;height:42px;border-radius:50%;object-fit:cover;flex:none}
+.mv-name{font-weight:600;font-size:15px}
+.mv-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.mv-sect-l{font-size:8.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted-lt);margin:0 0 6px}
+.mv-m{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+.mv-m.two-up{grid-template-columns:repeat(2,1fr);max-width:260px}
+.mv-m>div{background:var(--page);border-radius:6px;padding:9px 11px}
+.mv-m-l{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mv-m-v{font-size:15px;font-weight:600;margin-top:3px;letter-spacing:-.02em}
+.mv-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+.mv-box{border:1px solid var(--line);border-radius:6px;padding:10px 12px;
+  display:flex;align-items:center;gap:10px;min-width:0}
+.mv-box img{width:34px;height:34px;border-radius:4px;object-fit:cover;flex:none}
+.mv-box .l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.mv-box .v{font-size:11.5px;font-weight:500;margin-top:2px;line-height:1.35}
+.mv-h{font-size:11.5px;font-weight:700;margin:16px 0 7px;letter-spacing:-.005em}
+.mv-p{font-size:12.5px;line-height:1.6}
+.mv-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.mv-list li{font-size:12.5px;padding-left:15px;position:relative;line-height:1.5}
+.mv-list li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;
+  border-radius:50%;background:var(--orange)}
+.mv-tr{font-size:12px;color:var(--muted);line-height:1.65;max-height:170px;overflow-y:auto;
+  background:var(--page);border-radius:6px;padding:12px 14px}
+@media(max-width:900px){
+  .mv-grid{grid-template-columns:1fr}
+  .mv-m{grid-template-columns:repeat(3,1fr)}
+  .mv-row{grid-template-columns:1fr}
+}
+
+.insight{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);
+  border-radius:7px;box-shadow:var(--card);padding:16px 20px;margin-top:14px;
+  font-size:14px;line-height:1.55;max-width:112ch}
+.insight b{font-weight:600}
+.insight .ilab{display:block;font-size:9.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--orange-ink);margin-bottom:5px}
+
+/* ===== v7 ===== */
+:root{--gold:#c9a227;--silver:#a9b0b6;--bronze:#b0713a}
+.vc-rank.g1{background:var(--gold)}
+.vc-rank.g2{background:var(--silver)}
+.vc-rank.g3{background:var(--bronze);color:#fff}
+
+/* halo signal cards */
+.halo4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:var(--card);
+  padding:15px 17px}
+.hcard .hl{font-size:11px;color:var(--muted);font-weight:500;margin-bottom:7px}
+.hcard .hv{font-size:22px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.hcard .hv.dim{color:var(--muted-lt);font-weight:400}
+.hcard .hs{font-size:11px;color:var(--muted-lt);margin-top:5px;line-height:1.4}
+.hcard .hv.sig-strong{color:var(--pos)}
+.hcard .hv.sig-moderate{color:var(--pos)}
+.hcard .hv.sig-weak{color:var(--orange-ink)}
+.hcard .hv.sig-none{color:var(--muted)}
+
+/* generic hover tooltip on charts */
+.chartwrap{position:relative}
+.tip{position:absolute;pointer-events:none;background:#fff;border:1px solid var(--line);
+  border-radius:7px;box-shadow:0 6px 24px rgba(30,42,54,.16);padding:11px 13px;font-size:11.5px;
+  min-width:178px;opacity:0;transition:opacity .1s;z-index:8}
+.tip.on{opacity:1}
+.tip .tt{font-weight:600;font-size:12px;margin-bottom:7px}
+.tip .tr{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 0}
+.tip .tr span:first-child{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.tip .tk{width:8px;height:8px;border-radius:2px;flex:none}
+.tip .tv{font-variant-numeric:tabular-nums;font-weight:600}
+.hitbox{fill:transparent;cursor:pointer}
+.hitbox:hover{fill:rgba(30,42,54,.05)}
+
+/* info icon */
+.info{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;
+  border-radius:50%;border:1px solid var(--line);color:var(--muted-lt);font-size:9.5px;
+  font-weight:700;cursor:help;margin-left:6px;position:relative;flex:none}
+.info:hover{border-color:var(--orange);color:var(--orange-ink)}
+.info .ib{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);width:250px;
+  background:var(--navy);color:#e6eaee;font-size:11px;font-weight:400;line-height:1.5;
+  padding:10px 12px;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .12s;
+  text-align:left;z-index:20;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.info:hover .ib{opacity:1}
+.card-h h3{display:flex;align-items:center}
+
+/* clickable stat card */
+.scard.tap{cursor:pointer;transition:border-color .12s,box-shadow .12s}
+.scard.tap:hover{border-left-color:var(--orange);box-shadow:0 2px 12px rgba(30,42,54,.1)}
+.scard .s-more{font-size:10.5px;color:var(--orange-ink);font-weight:600;margin-top:7px}
+
+/* product split hover */
+.split{position:relative}
+.splitwrap{position:relative;display:inline-block}
+.splitwrap .tip{bottom:16px;left:0}
+.splitwrap:hover .tip{opacity:1}
+
+/* mini takeaways */
+.mini-hero{background:var(--navy);border-radius:8px;padding:22px 26px;color:#fff;position:relative;overflow:hidden}
+.mini-hero::after{content:"";position:absolute;right:-50px;top:-50px;width:170px;height:170px;
+  border-radius:50%;background:rgba(250,162,42,.10)}
+.mini-hero .hc-e{margin-bottom:9px}
+.mini-hero .mh-t{font-size:17px;font-weight:500;line-height:1.4;max-width:70ch;position:relative}
+.mini-hero .mh-t b{color:var(--orange);font-weight:600}
+.mini2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+
+/* takeaway tints + impact */
+.tcard.t0{background:#fff}
+.tcard.t1{background:#fbfcfd}
+.tcard.t2{background:#fdfaf4}
+.tcard.t3{background:#f9fbfa}
+.tc-b b,.tc-act b,.hc-b b,.mh-t b{font-weight:600}
+.tc-b b{color:var(--navy)}
+.tc-impact{margin-top:9px;padding:10px 12px;border-radius:0 3px 3px 0;
+  background:#eef4f0;border-left:2px solid var(--pos);font-size:11.5px;line-height:1.5}
+.tc-impact .l{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--pos);display:block;margin-bottom:3px}
+.tc-act .l{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--orange-ink);display:block;margin-bottom:3px}
+
+@media(max-width:1200px){.halo4{grid-template-columns:repeat(2,1fr)}.mini2{grid-template-columns:1fr}}
+@media(max-width:560px){.halo4{grid-template-columns:1fr}}
+
+/* content library wall */
+.libwall{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.libcard{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;
+  display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.libcard:hover{border-color:var(--orange)}
+.libthumb{position:relative;aspect-ratio:3/4;background:var(--navy);overflow:hidden}
+.libthumb img{width:100%;height:100%;object-fit:cover}
+.libsrc{position:absolute;top:7px;left:7px;font-size:9px;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;padding:3px 7px;border-radius:9px;color:var(--navy)}
+.libsrc.contest{background:#fcd39a}
+.libsrc.spark{background:#bfe3d2}
+.libmeta{padding:9px 10px 10px}
+.libgmv{font-size:13px;font-weight:600;letter-spacing:-.02em}
+.libhandle{font-size:10.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:1px}
+.libviews{font-size:10px;color:var(--muted-lt);margin-top:4px}
+
+/* source / usage blocks */
+.srcrow{display:flex;align-items:center;gap:12px;padding:11px 0}
+.srcrow + .srcrow{border-top:1px solid var(--line-lt)}
+.srcname{font-size:13px;font-weight:600;min-width:74px}
+.srcbar{flex:1;height:8px;background:var(--page);border-radius:4px;overflow:hidden}
+.srcbar i{display:block;height:100%}
+.srcval{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.srcsub{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+.usebig{font-size:46px;font-weight:600;letter-spacing:-.04em;line-height:1}
+.usesub{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.55;max-width:42ch}
+.usemeter{height:10px;background:var(--page);border-radius:5px;overflow:hidden;margin:16px 0 8px}
+.usemeter i{display:block;height:100%;background:var(--orange)}
+.uselab{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-lt)}
+@media(max-width:1200px){.libwall{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:820px){.libwall{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.libwall{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body class="th-b">
+
+<nav class="nav"><div class="wrap nav-in">
+  <div class="brand"><img src="data:image/png;base64,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" alt=""><b>Grizzly</b></div>
+  <div class="nav-links" id="navlinks">
+    <a href="#overview">Overview</a>
+    <a href="#content">Top Videos</a>
+    <a href="#amazon">Amazon</a>
+    <a href="#creators">Creators</a>
+    <a href="#rights">Rights &amp; reuse</a>
+    <a href="#samples">Samples</a>
+    <a href="#products">Products</a>
+    <a href="#paid">Paid</a>
+    <a href="#trends">Trends</a>
+    <a href="#summary">Summary</a>
+  </div>
+  <div class="nav-client" id="nav-client"></div>
+  <div class="nav-tag" id="nav-tag"></div>
+</div></nav>
+
+<div class="wrap">
+
+<section class="sec" id="overview">
+  <div class="eyebrow">Overview</div>
+  <h2>TikTok Shop performance</h2>
+  <p class="sub" id="ov-sub"></p>
+  <div class="sec-body">
+    <div class="kgrid" id="kgrid"></div>
+    <div class="kgrid6" id="kgrid6"></div>
+  </div>
+</section>
+
+<section class="sec" id="content">
+  <div class="eyebrow">Content</div>
+  <h2>Top 20 videos by GMV</h2>
+  <p class="sub">Ranked by revenue earned inside the month. Click any video for full detail.</p>
+  <div class="sec-body">
+    <div class="wall" id="wall"></div>
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>Videos 6 to 20</h3><div class="chips" id="vt-chips"></div></div>
+      <div class="scroll"><table class="tb" data-sortable>
+        <thead><tr>
+          <th class="s">#</th><th></th><th class="s">Creator</th><th>Caption</th><th class="s">Product</th>
+          <th class="r s">GMV, Aug</th><th class="r s">Units</th><th class="r s">Views, life</th>
+          <th class="r s">GPM, life</th><th class="r s">GMV, life</th>
+        </tr></thead>
+        <tbody id="vtable"></tbody>
+      </table></div>
+      <button class="more" data-target="vtable" data-show="5">Show all 15 videos</button>
+    </div>
+    <div class="insight" id="v-note"></div>
+  </div>
+</section>
+
+<section class="sec" id="amazon">
+  <div class="eyebrow">Cross channel</div>
+  <h2>Amazon Halo Effect</h2>
+  <p class="sub">Whether TikTok activity moves Amazon sales for this brand.</p>
+  <div class="sec-body">
+    <div class="halo4" id="halo4"></div>
+    <div class="card">
+      <div class="card-h"><h3>Amazon sales against TikTok activity<span class="info">i<span class="ib">Monthly buckets. The link is the R squared of TikTok views against Amazon sales, the same calculation Euka uses. It only publishes a rating when the result survives removing part-month data.</span></span></h3><span id="halo-scope"></span></div>
+      <div class="card-pad chartwrap" style="padding-top:16px">
+        <div id="chart-halo"></div><div class="tip" id="tip-halo"></div>
+        <div class="legend">
+          <span><i class="lk" style="background:#3a4a58"></i>Amazon sales</span>
+          <span><i class="lk" style="background:var(--orange)"></i>TikTok views</span>
+          <span><i class="lk" style="background:var(--pos)"></i>TikTok Shop sales</span>
+        </div>
+      </div>
+    </div>
+    <div class="insight" id="halo-note"></div>
+  </div>
+</section>
+
+<section class="sec" id="creators">
+  <div class="eyebrow">Creators</div>
+  <h2>Creator base</h2>
+  <p class="sub">Who posted, who is new, who came back, and who is at risk of leaving.</p>
+  <div class="sec-body">
+    <div class="strip" id="strip"></div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>Top creators this month</h3><div class="chips" id="cr-chips"></div></div>
+      <div class="scroll"><table class="tb" data-sortable>
+        <thead><tr><th class="s">#</th><th class="s">Creator</th><th>Type</th>
+          <th class="r s">GMV</th><th class="r s">Share</th><th class="r s">Videos</th>
+          <th class="r s">GMV / video</th><th class="r s">vs last month</th></tr></thead>
+        <tbody id="creators-tb"></tbody>
+      </table></div>
+      <button class="more" data-target="creators-tb" data-show="5">Show all 12 creators</button>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>Creator overview by level<span class="info">i<span class="ib">Creators grouped by their own 30-day TikTok Shop GMV across the whole platform, not just this shop. L1 is the smallest tier, L7 the largest.</span></span></h3></div>
+      <div class="scroll"><table class="tb">
+        <thead><tr><th>Creator level</th><th class="r">Creators</th><th class="r">Videos</th>
+          <th class="r">GMV</th><th class="r">Invites sent</th><th class="r">Sample requests</th>
+          <th class="r">Samples shipped</th></tr></thead>
+        <tbody id="levels"></tbody><tfoot id="levels-foot"></tfoot>
+      </table></div>
+    </div>
+
+    <div class="two" style="margin-top:14px">
+      <div class="card">
+        <div class="card-h"><h3>Active creators over time<span class="info">i<span class="ib">New counts creators posting for this shop for the first time that month. Returning counts creators who had posted in some earlier month. Together they make the month's active total.</span></span></h3></div>
+        <div class="card-pad chartwrap" style="padding-top:14px">
+          <div id="chart-active"></div><div class="tip" id="tip-active"></div>
+          <div class="legend">
+            <span><i class="lk" style="background:var(--orange)"></i>New</span>
+            <span><i class="lk" style="background:#3a4a58"></i>Returning</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Cohort retention<span class="info">i<span class="ib">Each row is the group of creators who first posted in that month. M0 is that first month, always 100%. M1 is the share still posting one month later, M2 two months later, and so on. Reading down a column shows whether newer groups are sticking better than older ones.</span></span></h3></div>
+        <div class="card-pad" style="padding-top:14px"><div class="scroll">
+          <table class="coh" id="cohort"></table></div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div class="mini-hero">
+        <div class="hc-e" id="mini-e"></div>
+        <div class="mh-t" id="mini-t"></div>
+      </div>
+      <div class="mini2" id="mini-cards"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rights">
+  <div class="eyebrow">Content rights and reuse</div>
+  <h2>Content rights and reuse</h2>
+  <p class="sub">Creator videos the brand holds reuse rights to, how those rights were obtained, and how much of the library is being used.</p>
+  <div class="sec-body">
+    <div class="strip" id="rights-strip"></div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>The library<span class="info">i<span class="ib">Every creator video the brand holds reuse rights to. Rights arrive either through a contest entry or through a spark code on a paid collaboration. All terms on this account are perpetual with no additional fee.</span></span></h3>
+        <div class="chips" id="lib-chips"></div></div>
+      <div class="card-pad"><div class="libwall" id="libwall"></div></div>
+    </div>
+
+    <div class="two" style="margin-top:14px">
+      <div class="card">
+        <div class="card-h"><h3>How the rights were obtained</h3></div>
+        <div class="card-pad" id="rights-source"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Library in use</h3></div>
+        <div class="card-pad" id="rights-usage"></div>
+      </div>
+    </div>
+
+    <div class="insight" id="rights-note"></div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>Flat-fee creators</h3><span>Contracted spend against revenue produced</span></div>
+      <div class="scroll"><table class="tb">
+        <thead><tr><th>Creator</th><th class="r">Videos</th><th class="r">Fee</th>
+          <th class="r">Cost / video</th><th class="r">GMV</th><th class="r">Return</th></tr></thead>
+        <tbody id="flatfee"></tbody>
+      </table></div>
+    </div>
+    <p class="note" id="ff-note"></p>
+  </div>
+</section>
+
+<section class="sec" id="samples">
+  <div class="eyebrow">Sample program</div>
+  <h2>Samples analysis</h2>
+  <p class="sub">Stage volumes for the month against last month. Each stage is counted independently, so read these as volumes rather than one cohort moving through a funnel.</p>
+  <div class="sec-body"><div class="strip" id="funnel"></div></div>
+</section>
+
+<section class="sec" id="products">
+  <div class="eyebrow">Products</div>
+  <h2>Product performance</h2>
+  <p class="sub">All-channel TikTok Shop performance for the month, with the affiliate share of each product's revenue and current stock.</p>
+  <div class="sec-body">
+    <div class="card">
+      <div class="scroll"><table class="tb" data-sortable>
+        <thead><tr><th class="s">Product</th><th class="r s">GMV</th><th>Affiliate / product card</th>
+          <th class="r s">Units</th><th class="r s">Refunds</th><th class="r s">Impressions</th>
+          <th class="r s">CTR</th><th class="r s">Videos</th><th class="r s">Sample req.</th>
+          <th class="r s">In stock</th></tr></thead>
+        <tbody id="products-tb"></tbody>
+      </table></div>
+      <button class="more" data-target="products-tb" data-show="5">Show all 10 products</button>
+    </div>
+    <div class="insight" id="p-note"></div>
+  </div>
+</section>
+
+<section class="sec" id="paid">
+  <div class="eyebrow">Paid support</div>
+  <h2>GMV Max performance</h2>
+  <p class="sub">Ad spend against attributed revenue, by campaign. Target ROI is the figure the campaign was set up to hit.</p>
+  <div class="sec-body">
+    <div class="kgrid" id="paid-kpis"></div>
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h3>Campaigns with spend in August<span class="info">i<span class="ib">Live from TikTok Ads. Campaigns with no spend in the window are omitted. Revenue here is TikTok Ads attributed revenue, which uses click and view windows and does not reconcile to TikTok Shop GMV.</span></span></h3><div class="chips" id="paid-chips"></div></div>
+      <div class="scroll"><table class="tb" data-sortable>
+        <thead><tr><th class="s">Campaign</th><th class="r s">Target ROI</th><th class="r s">Actual ROI</th>
+          <th>Target vs actual</th><th class="r s">Spend</th><th class="r s">Share of spend</th>
+          <th class="r s">Orders</th><th class="r s">Revenue</th><th class="r s">Cost / order</th></tr></thead>
+        <tbody id="paid-tb"></tbody><tfoot id="paid-foot"></tfoot>
+      </table></div>
+    </div>
+    <div class="insight" id="paid-note"></div>
+  </div>
+</section>
+
+<section class="sec" id="trends">
+  <div class="eyebrow">Monthly trends</div>
+  <h2>Six-month rolling performance</h2>
+  <p class="sub">Creator video revenue and videos published by month. Revenue counts sales attributed to creator videos, so it runs below total shop GMV.</p>
+  <div class="sec-body"><div class="card">
+    <div class="card-h"><h3>Creator video revenue by month</h3><span id="tr-sub"></span></div>
+    <div class="card-pad chartwrap" style="padding-top:16px">
+      <div id="chart-trend"></div><div class="tip" id="tip-trend"></div>
+      <div class="legend">
+        <span><i class="lk" style="background:var(--orange)"></i>Creator video revenue</span>
+        <span><i class="lk" style="background:var(--navy-3)"></i>Videos published</span>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="sec" id="summary">
+  <div class="eyebrow">Summary</div>
+  <h2>Key takeaways</h2>
+  <p class="sub">Check the actions you want us to run with. We will pick these up on the next call.</p>
+  <div class="sec-body">
+    <div class="hero-card">
+      <div class="hc-e" id="hc-e"></div>
+      <div class="hc-t" id="hc-t"></div>
+      <div class="hc-b" id="hc-b"></div>
+      <div class="hc-s" id="hc-s"></div>
+    </div>
+    <div class="tcards" id="tcards"></div>
+  </div>
+</section>
+
+</div>
+
+<div class="mv" id="mv" role="dialog" aria-modal="true" aria-label="Video detail">
+  <div class="mv-card"><button class="mv-x" id="mv-x" aria-label="Close">&times;</button>
+  <div id="mv-body"></div></div>
+</div>
+
+<div class="foot"><div class="wrap"><p id="f-src"></p><p id="f-gen"></p></div></div>
+
+<script>
+/* ==========================================================================
+   DATA BLOB. The scheduled run replaces this object and nothing else.
+   Source: sample data. This is a demonstration report, not a real account.
+   gmv      = revenue attributed inside the reporting month.
+   lifeGmv / views / likes = the video's totals since it was posted.
+   flatFeeHandles drives the Commission / Flat-fee tag. Empty until the
+   internal goals sheet has a row for this client.
+   ========================================================================== */
+const IMG_V="https://database.euka.ai/storage/v1/object/public/creator_videos_photos/";
+const IMG_A="https://database.euka.ai/storage/v1/object/public/creator_profile_pics/";
+const IMG_P="https://database.euka.ai/storage/v1/object/public/seller_products_photos/";
+
+const D = {
+  mock:true,
+  client:"VERA Curl Co.", period:"October 2026", periodShort:"Oct",
+  comparedTo:"September 2026",
+  dataThrough:"October 31, 2026", generated:"November 3, 2026",
+  flatFeeHandles:["jules.curls","themorningcurl","findsbyrowan"],
+
+  kMain:[
+    {label:"Total shop GMV", value:"$142,380", delta:34.2},
+    {label:"Affiliate GMV",  value:"$108,640", delta:41.8},
+    {label:"Orders",         value:"3,214",    delta:29.7},
+    {label:"Average order value", value:"$44.30", delta:3.5}
+  ],
+  kSub:[
+    {label:"Videos posted",       value:"612",       delta:38.5},
+    {label:"Creator video views", value:"4,186,220", delta:52.1},
+    {label:"Creators who posted", value:"284",       delta:31.5},
+    {label:"Sample post rate",    value:"82%",       delta:11.0},
+    {label:"Avg views / video",   value:"6,840",     delta:9.8},
+    {label:"Shop GPM",            value:"$25.95",    delta:null}
+  ],
+
+  videos:[
+    {id:"7681284371931729183",handle:"jules.curls",   gmv:9840.50,units:214,views:812460,likes:24180,comments:1860,lifeGmv:11240.00,lifeUnits:246,posted:"Oct 4, 2026",cap:"Three weeks with the define mist and my curl pattern is completely different.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494019453887613634"},
+    {id:"7672216716360895774",handle:"curlsbytara",   gmv:7620.00,units:168,views:604210,likes:18940,comments:1420,lifeGmv:8110.40,lifeUnits:179,posted:"Oct 9, 2026",cap:"Wash day stretched to day five. This is the only refresh I use now.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494520846493125240"},
+    {id:"7672410591029415198",handle:"curlsbytara",   gmv:6180.75,units:139,views:498330,likes:15260,comments:1180,lifeGmv:6940.20,lifeUnits:156,posted:"Oct 2, 2026",cap:"Day three curls without a wash, start to finish.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494520846493125240"},
+    {id:"7673143421443312927",handle:"curlsbytara",   gmv:5430.20,units:121,views:441870,likes:13820,comments:960,lifeGmv:5890.00,lifeUnits:131,posted:"Oct 16, 2026",cap:"Day thirty update and the before and after speaks for itself.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494520846493125240"},
+    {id:"7682627149982911758",handle:"themorningcurl",gmv:4260.00,units:96, views:318940,likes:9840, comments:720,lifeGmv:4510.60,lifeUnits:102,posted:"Oct 11, 2026",cap:"Fine curls that fall flat by noon, this is the fix.",prod:"VERA Curl Spray Gel",pid:"1732021550825246755",cid:"7494005518861896570"},
+    {id:"7663430155246865678",handle:"dailyfinds_mia",gmv:3870.40,units:88, views:286150,likes:8620, comments:640,lifeGmv:4020.80,lifeUnits:91, posted:"Oct 7, 2026",cap:"The duo is back in stock and cheaper than buying separately.",prod:"VERA Curl Duo",pid:"1732025279231725603",cid:"7496321617148808187"},
+    {id:"7646993823809260814",handle:"honestlyamber", gmv:3140.25,units:71, views:241680,likes:7210, comments:510,lifeGmv:3310.00,lifeUnits:75, posted:"Oct 19, 2026",cap:"The balm nobody is talking about yet, and they should be.",prod:"VERA Curl Balm",pid:"1731962126469402659",cid:"7493999757720783263"},
+    {id:"7676365308155661582",handle:"thecurlcart",   gmv:2680.90,units:61, views:198420,likes:6140, comments:430,lifeGmv:2840.50,lifeUnits:64, posted:"Oct 13, 2026",cap:"Define mist review, one month in, no filter.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494210325336589375"},
+    {id:"7667686164094029070",handle:"sagewithcurls", gmv:2310.00,units:52, views:174960,likes:5280, comments:380,lifeGmv:2460.30,lifeUnits:55, posted:"Oct 22, 2026",cap:"Layering order matters more than the products do.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7493993961281259649"},
+    {id:"7664385134442941726",handle:"curlfindsdaily",gmv:2090.60,units:47, views:162340,likes:4910, comments:340,lifeGmv:2180.00,lifeUnits:49, posted:"Oct 26, 2026",cap:"Answering every question you sent me about the mist.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494160687438400460"},
+    {id:"7634953062649498911",handle:"curlsbytara",   gmv:1840.00,units:42, views:146820,likes:4320, comments:290,lifeGmv:1960.40,lifeUnits:45, posted:"Oct 5, 2026",cap:"Curl balm on soaking wet hair, that is the whole trick.",prod:"VERA Curl Balm",pid:"1731962126469402659",cid:"7494520846493125240"},
+    {id:"7685819531826138399",handle:"curlsbytara",   gmv:1620.50,units:37, views:131470,likes:3860, comments:260,lifeGmv:1710.00,lifeUnits:39, posted:"Oct 18, 2026",cap:"Autumn curl reset, the full routine in one kit.",prod:"Complete Curl Routine Kit",pid:"1732494652474298403",cid:"7494520846493125240"},
+    {id:"7673532051387125005",handle:"glossylena",    gmv:1480.20,units:34, views:119680,likes:3540, comments:240,lifeGmv:1560.80,lifeUnits:36, posted:"Oct 24, 2026",cap:"Second day curls, honest attempt, real results.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7493998470573164683"},
+    {id:"7680561489924689183",handle:"curlsbytara",   gmv:1290.00,units:29, views:104310,likes:3120, comments:210,lifeGmv:1360.40,lifeUnits:31, posted:"Oct 8, 2026",cap:"For anyone who wants a routine without ten products.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494520846493125240"},
+    {id:"7675734101378256158",handle:"curlsbytara",   gmv:1140.80,units:26, views:96240, likes:2840, comments:190,lifeGmv:1210.00,lifeUnits:28, posted:"Oct 29, 2026",cap:"Reviving curls between wash days, thirty seconds flat.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494520846493125240"},
+    {id:"7678093706930425102",handle:"dealdropdaily", gmv:980.40, units:22, views:84760, likes:2410, comments:160,lifeGmv:1040.20,lifeUnits:24, posted:"Oct 14, 2026",cap:"Price drop on the define mist, going fast.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494261778303518508"},
+    {id:"7667096562589338910",handle:"shopwithnova",  gmv:860.00, units:19, views:76480, likes:2180, comments:140,lifeGmv:910.60, lifeUnits:21, posted:"Oct 21, 2026",cap:"Curl balm, one month of honest use.",prod:"VERA Curl Balm",pid:"1731962126469402659",cid:"7494004742435735369"},
+    {id:"7667803665129884958",handle:"brightbyeva",   gmv:740.60, units:17, views:68920, likes:1940, comments:120,lifeGmv:790.00, lifeUnits:18, posted:"Oct 27, 2026",cap:"The duo set does more than either product alone.",prod:"VERA Curl Duo",pid:"1732025279231725603",cid:"7494064763598375632"},
+    {id:"7676206532299607310",handle:"everydaysteals",gmv:620.00, units:14, views:59340, likes:1680, comments:100,lifeGmv:660.40, lifeUnits:15, posted:"Oct 30, 2026",cap:"Restock alert, the mist is back.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7494016829549676713"},
+    {id:"7683533422228196639",handle:"findsbyrowan",  gmv:540.80, units:12, views:52180, likes:1520, comments:90, lifeGmv:580.00, lifeUnits:13, posted:"Oct 31, 2026",cap:"Curl routine for beginners, four products, no guessing.",prod:"VERA Curl Define Mist",pid:"1732444624461205539",cid:"7495832626875698123"}
+  ],
+
+  detail:{
+    "7681284371931729183":{creatorName:"Jules",followers:95700,usageRights:"Perpetual, no fee",
+      keyIdea:"A thirty day before and after on curl pattern, framed as a texture change rather than a styling result.",
+      sentiment:"Positive",
+      hooks:["Opens on the before shot with no preamble","Names the exact day count in the first two seconds"],
+      points:["Texture change rather than hold","Works on second and third day hair","No crunch or cast"],
+      cta:"Shows the product tile and says to grab it before the restock sells out.",
+      transcript:"Three weeks ago my curls would not clump at all. I started using the define mist on soaking wet hair, scrunched, and left it alone. This is day twenty one. Same hair, no other product changed. If your curls are loose and keep falling out, this is the one to try."},
+    "7672216716360895774":{creatorName:"Tara",followers:148200,usageRights:"Perpetual, no fee",
+      keyIdea:"Refresh routine positioned around stretching wash day, which is the audience's real pain point.",
+      sentiment:"Positive",
+      hooks:["States the problem as a number of days, not a product claim","Shows day five hair before anything is applied"],
+      points:["Extends wash day","Thirty second routine","No buildup across days"],
+      cta:"Tells viewers the refresh is the cheapest product in the kit and links it directly.",
+      transcript:"Day five and I have not washed my hair. People keep asking how. I spray the define mist root to tip, scrunch twice, and that is it. No gel, no cream, nothing else. It takes thirty seconds and buys me two extra days."},
+    "7672410591029415198":{creatorName:"Tara",followers:148200,usageRights:"Perpetual, no fee",
+      keyIdea:"A full day three routine shown start to finish, which performs well because it is instructional rather than promotional.",
+      sentiment:"Positive",
+      hooks:["Promises a complete routine in the first frame","No product shown until twelve seconds in"],
+      points:["Full routine in one video","Works without washing","Beginner friendly"],
+      cta:"Points to the routine kit for anyone starting from scratch.",
+      transcript:"Day three curls, no wash, here is everything I do. Dampen with water first, that is the step everyone skips. Then the define mist. Scrunch upward, do not rake. Air dry or diffuse on low. That is the whole routine."},
+    "7673143421443312927":{creatorName:"Tara",followers:148200,usageRights:"Perpetual, no fee",
+      keyIdea:"A thirty day update that revisits an earlier video, which brings back the original audience and converts them.",
+      sentiment:"Positive",
+      hooks:["References the earlier video directly","Leads with the comparison shot"],
+      points:["Long term result rather than day one","Consistent across wash cycles","Addresses the sceptical comments"],
+      cta:"Answers the most common comment and then shows where to buy.",
+      transcript:"A lot of you asked whether this lasts past the first week. Day thirty. Same routine, nothing added. The curl clumps are tighter and I am using less product than when I started."},
+    "7682627149982911758":{creatorName:"Mor",followers:62400,usageRights:"Perpetual, no fee",
+      keyIdea:"Targets fine curls specifically, which is a narrower audience but converts at a higher rate.",
+      sentiment:"Positive",
+      hooks:["Names the exact hair type in the first line","Shows the midday fall-flat problem"],
+      points:["Hold without weight","Made for fine curl patterns","No flaking"],
+      cta:"Recommends the spray gel over the cream for this hair type and links it.",
+      transcript:"If your curls are fine and fall flat by lunchtime, cream is not your answer, it is too heavy. The spray gel gives hold without the weight. Apply to wet hair, scrunch, let it cast, then break the cast once it is dry."}
+  },
+
+  videoNote:"<b>The top five videos produced 31% of affiliate revenue and all five were posted this month.</b> That is a healthier shape than last month, when the back catalog carried the shop. New content is converting on its own.",
+
+  strip:[
+    {label:"Creators who posted",value:"284",  delta:31.5,acc:true},
+    {label:"New creators",       value:"186",  delta:44.2},
+    {label:"Returning",          value:"98",   delta:18.1},
+    {label:"Churn risk",         value:"64",   delta:null,tap:"churn",more:"See and export the list"},
+    {label:"Came back rate",     value:"45.4%",delta:12.6}
+  ],
+  churn:{
+    count:64, prevActive:216, returned:152, sharePct:29.6,
+    rows:[
+      {k:"Creators who posted in September",       v:"216"},
+      {k:"Of those, posted again in October",      v:"152"},
+      {k:"Have not posted since September",        v:"64"},
+      {k:"Share of September's base",              v:"29.6%"},
+      {k:"Videos those 64 produced in September",  v:"118"},
+      {k:"September GMV at risk",                  v:"$6,240"}
+    ],
+    note:"Counted as creators who posted at least one video in September and none in October. Export the full list to work it.",
+    csv:"curlsby_rae,3,420,2026-09-28|haircareharper,2,310,2026-09-26|quietcurlco,4,280,2026-09-24|thecurledit,1,190,2026-09-21|morning_mila,2,170,2026-09-19|softcurlsam,1,140,2026-09-17|routinewithivy,3,120,2026-09-15|curlsonabudget,1,90,2026-09-12|lenascurlbox,2,80,2026-09-10|dailycurlaudrey,1,60,2026-09-08|thecurlclub_,1,40,2026-09-05|curlnotesana,1,20,2026-09-02"
+  },
+
+  levels:[
+    {lv:"L1",range:"$0 – $5K",     creators:2840,videos:318,gmv:18640.00,invites:412,req:1180,ship:286,color:"#e4eefb"},
+    {lv:"L2",range:"$5K – $25K",   creators:684, videos:164,gmv:31280.00,invites:96, req:248, ship:74, color:"#eee7f6"},
+    {lv:"L3",range:"$25K – $60K",  creators:312, videos:86, gmv:28940.00,invites:38, req:92,  ship:31, color:"#ddf2ef"},
+    {lv:"L4",range:"$60K – $150K", creators:148, videos:32, gmv:19860.00,invites:14, req:34,  ship:12, color:"#e2f2e2"},
+    {lv:"L5",range:"$150K – $400K",creators:62,  videos:9,  gmv:7420.00, invites:4,  req:8,   ship:3,  color:"#fdf2d9"},
+    {lv:"L6",range:"$400K – $1.5M",creators:21,  videos:3,  gmv:2500.00, invites:1,  req:2,   ship:1,  color:"#fde8d8"},
+    {lv:"L7",range:"$1.5M+",       creators:4,   videos:0,  gmv:0,       invites:0,  req:0,   ship:0,  color:"#fbe0e0"}
+  ],
+
+  activity:[
+    {m:"May",nw:42,rt:18},{m:"Jun",nw:68,rt:34},{m:"Jul",nw:94,rt:51},
+    {m:"Aug",nw:128,rt:68},{m:"Sep",nw:129,rt:87},{m:"Oct",nw:186,rt:98}
+  ],
+  trend:[
+    {m:"May '26",gmv:21480.00,videos:138},{m:"Jun '26",gmv:34920.00,videos:214},
+    {m:"Jul '26",gmv:48160.00,videos:296},{m:"Aug '26",gmv:62840.00,videos:382},
+    {m:"Sep '26",gmv:76620.00,videos:442},{m:"Oct '26",gmv:108640.00,videos:612}
+  ],
+  cohort:[
+    {m:"May 2026",n:42, r:[100,38.1,26.2,21.4,19.0,16.7]},
+    {m:"Jun 2026",n:68, r:[100,41.2,29.4,23.5,20.6,null]},
+    {m:"Jul 2026",n:94, r:[100,44.7,32.9,26.6,null,null]},
+    {m:"Aug 2026",n:128,r:[100,46.1,35.2,null,null,null]},
+    {m:"Sep 2026",n:129,r:[100,48.8,null,null,null,null]},
+    {m:"Oct 2026",n:186,r:[100,null,null,null,null,null]}
+  ],
+
+  creators:[
+    {handle:"curlsbytara",   cid:"7494520846493125240",gmv:21480.00,videos:7, delta:38.4},
+    {handle:"jules.curls",   cid:"7494019453887613634",gmv:15260.00,videos:1, delta:52.1},
+    {handle:"themorningcurl",cid:"7494005518861896570",gmv:10120.00,videos:1, delta:24.8},
+    {handle:"honestlyamber", cid:"7493999757720783263",gmv:7340.00, videos:1, delta:61.3},
+    {handle:"sagewithcurls", cid:"7493993961281259649",gmv:5910.00, videos:1, delta:18.9},
+    {handle:"thecurlcart",   cid:"7494210325336589375",gmv:4780.00, videos:1, delta:null},
+    {handle:"glossylena",    cid:"7493998470573164683",gmv:3960.00, videos:1, delta:29.4},
+    {handle:"curlfindsdaily",cid:"7494160687438400460",gmv:3420.00, videos:1, delta:-8.2},
+    {handle:"dailyfinds_mia",cid:"7496321617148808187",gmv:2880.00, videos:1, delta:14.7},
+    {handle:"findsbyrowan",  cid:"7495832626875698123",gmv:2450.00, videos:1, delta:null},
+    {handle:"shopwithnova",  cid:"7494004742435735369",gmv:2110.00, videos:1, delta:33.6},
+    {handle:"brightbyeva",   cid:"7494064763598375632",gmv:1870.00, videos:1, delta:21.0}
+  ],
+  affiliateGmv:108640.00,
+  concentrationBands:{green:40,amber:60},
+
+  funnel:[
+    {label:"Sample requests",  value:"1,564",delta:27.4,acc:true},
+    {label:"Samples approved", value:"492",  delta:34.8},
+    {label:"Approval rate",    value:"31.5%",delta:5.8},
+    {label:"Samples shipped",  value:"407",  delta:31.2},
+    {label:"Post rate",        value:"82%",  delta:11.0},
+    {label:"Products featured",value:"9",    delta:12.5}
+  ],
+
+  products:[
+    {id:"1732444624461205539",name:"VERA Curl Define Mist",     gmv:48640.00,aff:39180.00,card:9460.00,units:1096,refund:1.84,imp:1284600,ctr:2.41,videos:214,req:486,stock:2840},
+    {id:"1731962126469402659",name:"VERA Curl Balm",            gmv:26180.00,aff:21440.00,card:4740.00,units:592, refund:2.10,imp:684200, ctr:2.18,videos:118,req:264,stock:1960},
+    {id:"1732494652474298403",name:"Complete Curl Routine Kit", gmv:21940.00,aff:17860.00,card:4080.00,units:248, refund:3.26,imp:412800, ctr:2.64,videos:96, req:198,stock:740},
+    {id:"1732021550825246755",name:"VERA Curl Spray Gel",       gmv:14820.00,aff:11240.00,card:3580.00,units:418, refund:1.92,imp:368400, ctr:1.98,videos:74, req:182,stock:2410},
+    {id:"1732025279231725603",name:"VERA Curl Duo",             gmv:11460.00,aff:8920.00, card:2540.00,units:286, refund:2.44,imp:294600, ctr:2.06,videos:58, req:146,stock:1680},
+    {id:"1731996596836208675",name:"VERA Curl Mousse",          gmv:8240.00, aff:5980.00, card:2260.00,units:214, refund:2.80,imp:218400, ctr:1.86,videos:42, req:124,stock:1420},
+    {id:"1731992300586635299",name:"VERA Curl Conditioner",     gmv:6180.00, aff:3020.00, card:3160.00,units:124, refund:3.22,imp:146200, ctr:2.12,videos:28, req:86, stock:960},
+    {id:"1731995934949150755",name:"VERA Curl Shampoo",         gmv:3240.00, aff:1000.00, card:2240.00,units:92,  refund:2.17,imp:84600,  ctr:1.74,videos:16, req:68, stock:1180},
+    {id:"1731996566647115811",name:"LIFT Volume Mousse",        gmv:1180.00, aff:0,       card:1180.00,units:28,  refund:0,   imp:21400,  ctr:2.34,videos:0,  req:0,  stock:640},
+    {id:"1731995939665186851",name:"VERA Gloss Duo",            gmv:500.00,  aff:0,       card:500.00, units:24,  refund:0,   imp:9800,   ctr:2.55,videos:0,  req:0,  stock:1840}
+  ],
+  productNote:"<b>The Define Mist is working, and the Curl Balm is catching up fast.</b> The mist took 486 sample requests and returned $48,640, and the balm returned $26,180 on 264. Both convert well above the shop average, so the sampling budget is landing where it should.",
+
+  paid:{
+    advertiser:"VERA Curl Co. - TTS",
+    otherAccounts:"A second ad account is linked to this store but carries no spend this month.",
+    campaigns:[
+      {name:"01.10 Curl Define Mist",target:2.4,cost:18640.00,orders:842,rev:46920.00,cpo:22.14,roi:2.52},
+      {name:"08.10 Curl Balm",       target:2.2,cost:11280.00,orders:498,rev:26410.00,cpo:22.65,roi:2.34},
+      {name:"15.10 Routine Kit",     target:2.0,cost:8500.00, orders:316,rev:18880.00,cpo:26.90,roi:2.22}
+    ],
+    note:"<b>Every campaign beat its target.</b> Blended ROI is <b>2.43</b> on <b>$38,420</b> of spend, up from <b>1.96</b> in September. The mist campaign is the strongest at <b>2.52</b> against a <b>2.4</b> target, and it has room for more budget before efficiency drops."
+  },
+  paidConnected:true,
+
+  haloScope:"All products, monthly, Feb to Oct 2026",
+  haloPartialFrom:null,
+  halo:[
+    {m:"Feb",amazon:218400.00,views:142800,sales:4210.00},
+    {m:"Mar",amazon:264800.00,views:268400,sales:9840.00},
+    {m:"Apr",amazon:206200.00,views:341600,sales:14620.00},
+    {m:"May",amazon:281600.00,views:486200,sales:21480.00},
+    {m:"Jun",amazon:232400.00,views:742800,sales:34920.00},
+    {m:"Jul",amazon:308200.00,views:1184600,sales:48160.00},
+    {m:"Aug",amazon:252800.00,views:1946200,sales:62840.00},
+    {m:"Sep",amazon:286400.00,views:2752400,sales:76620.00},
+    {m:"Oct",amazon:274600.00,views:4186220,sales:108640.00}
+  ],
+  haloNote:"<b>TikTok activity explains 19.3% of the month-to-month movement in Amazon sales.</b> The rating holds across nine closed months with no part-month data included, so it is a real link rather than a timing artifact. It is a moderate signal and we would not claim more than that: Amazon is growing for its own reasons too.",
+
+  rights:{
+    total:486, contest:291, spark:195, linkedToAds:68, uploadedToMeta:68,
+    terms:"Perpetual, no additional fee",
+    newThisPeriod:142, expired:0,
+    top12Gmv:52840.00, top12Views:3186420,
+    wall:[
+      {id:"7681284371931729183",handle:"jules.curls",   src:"spark",  gmv:11240.00,views:812460},
+      {id:"7672216716360895774",handle:"curlsbytara",   src:"spark",  gmv:8110.40, views:604210},
+      {id:"7672410591029415198",handle:"curlsbytara",   src:"contest",gmv:6940.20, views:498330},
+      {id:"7673143421443312927",handle:"curlsbytara",   src:"spark",  gmv:5890.00, views:441870},
+      {id:"7682627149982911758",handle:"themorningcurl",src:"contest",gmv:4510.60, views:318940},
+      {id:"7663430155246865678",handle:"dailyfinds_mia",src:"contest",gmv:4020.80, views:286150},
+      {id:"7646993823809260814",handle:"honestlyamber", src:"spark",  gmv:3310.00, views:241680},
+      {id:"7676365308155661582",handle:"thecurlcart",   src:"contest",gmv:2840.50, views:198420},
+      {id:"7667686164094029070",handle:"sagewithcurls", src:"spark",  gmv:2460.30, views:174960},
+      {id:"7664385134442941726",handle:"curlfindsdaily",src:"spark",  gmv:2180.00, views:162340},
+      {id:"7634953062649498911",handle:"curlsbytara",   src:"contest",gmv:1960.40, views:146820},
+      {id:"7685819531826138399",handle:"curlsbytara",   src:"contest",gmv:1710.00, views:131470}
+    ],
+    note:"<b>VERA owns 486 creator videos outright and 68 are already running as ads.</b> Every one carries perpetual rights at no extra fee. The twelve shown above have earned <b>$52,840</b> across <b>3.19M</b> views organically, and the 418 not yet in an ad account are the next place to look for paid creative."
+  },
+
+  flatFee:{placeholder:false,rows:[
+    {handle:"jules.curls",   videos:1, fee:2400, gmv:15260.00},
+    {handle:"themorningcurl",videos:1, fee:1800, gmv:10120.00},
+    {handle:"findsbyrowan",  videos:1, fee:900,  gmv:2450.00}
+  ]},
+
+  mini:{
+    e:"What the creator data shows",
+    t:'The October intake is the strongest yet. <b>186</b> new creators posted, and <b>152</b> of September\'s <b>216</b> came back.',
+    cards:[
+      {tag:"Retention",t:"Each cohort is holding better than the last",
+       b:"Month-one retention has climbed from <b>38.1%</b> in the May cohort to <b>48.8%</b> in September's. The creators joining now are staying longer, which compounds: returning creators produced <b>$42,180</b> this month with no new outreach cost.",
+       q:"Rising retention on a growing base is the combination worth protecting. It is what makes next month cheaper than this one."},
+      {tag:"The lag",t:"October's volume sets up November",
+       b:"Videos land as revenue over the following weeks. October produced <b>612</b> videos against <b>442</b> in September, and the one-month correlation on this account is <b>+0.84</b>. On that pattern, November opens from a stronger base than October did.",
+       q:"The work that drives November revenue is already done and posted."}
+    ]
+  },
+
+  hero:{
+    e:"Headline: October 2026",
+    t:'Affiliate revenue grew <b>41.8%</b> to <b>$108,640</b>, and every paid campaign beat its target.',
+    b:"Creator volume is the engine. <b>612</b> videos from <b>284</b> creators produced <b>4.19M</b> views, up <b>52%</b>, and the top five earners were all posted this month rather than carried from the back catalog. Paid returned <b>2.43</b> blended against <b>1.96</b> in September. The one thing to watch is concentration: the top three creators account for <b>43.1%</b> of affiliate revenue, which is healthy but worth widening.",
+    s:[{v:"$142,380",l:"Total shop GMV"},{v:"+34.2%",l:"vs September"},
+       {v:"2.43x",l:"blended ad ROI"},{v:"612",l:"videos posted"}]
+  },
+
+  takeaways:[
+    {tag:"What worked",t:"New content carried the month, not the back catalog",
+     b:"All five top-earning videos were posted in October, together producing <b>31%</b> of affiliate revenue. In September that share came mostly from videos made weeks earlier. The content engine is now converting on its own.",
+     act:"Hold creator volume at 600 or above and keep the sampling budget pointed at the mist and the balm.",
+     impact:"On the current one-month correlation of +0.84, holding volume protects roughly <b>$108K</b> of affiliate revenue into November."},
+    {tag:"Scale next",t:"Paid has room before efficiency drops",
+     b:"Blended ROI is <b>2.43</b> against a <b>2.2</b> average target, and the mist campaign returned <b>2.52</b> on <b>$18,640</b>. Nothing is showing the efficiency fall-off that usually marks the ceiling.",
+     act:"Raise the mist campaign's daily budget by 30% and hold the target at 2.4 for two weeks before reassessing.",
+     impact:"At the current return, an extra <b>$5,600</b> of spend would be worth roughly <b>$14,100</b> in attributed revenue."},
+    {tag:"Opportunity",t:"418 owned videos have never run as an ad",
+     b:"The library holds <b>486</b> licensed videos on perpetual terms at no extra fee, and <b>68</b> are live in ad accounts. The other <b>418</b> are proven organic performers sitting unused.",
+     act:"Pull the top 30 by organic GMV into Meta and TikTok ad accounts as test creative this month.",
+     impact:"Creative the brand already owns, with no licensing cost and organic performance data to pick from."},
+    {tag:"Worth watching",t:"Concentration is healthy but narrowing",
+     b:"The top three creators produced <b>43.1%</b> of affiliate revenue, inside the amber band. <b>@curlsbytara</b> alone is <b>$21,480</b> across seven videos. The base is growing fast enough that this is a shape to manage rather than a risk today.",
+     act:"Move the two strongest L3 creators onto retainers so growth is not resting on three relationships.",
+     impact:"Widening the top tier protects against a single creator pausing, which at current levels would remove about a fifth of affiliate revenue."}
+  ],
+
+  footNote:"",
+  footLine:"Prepared with Grizzly Dash by Grizzly Media \u00b7 TikTok Shop Monthly Report \u00b7 VERA Curl Co. \u00b7 November 3, 2026 \u00b7 Sample report \u00b7 Version 1.0"
+};
+
+/* ========================================================================== */
+const $=i=>document.getElementById(i);
+const m0=n=>"$"+Math.round(n).toLocaleString("en-US");
+const m2=n=>"$"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const nm=n=>n.toLocaleString("en-US");
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const gpm=v=>v.views?(v.lifeGmv/v.views*1000):0;      /* lifetime over lifetime */
+const tagFor=h=>D.flatFeeHandles.indexOf(h)>-1?"Flat-fee":"Commission only";
+
+function dl(d){
+  if(d===null||d===undefined) return '<span class="flat">new this month</span>';
+  const up=d>=0,g=up?"\u25B2":"\u25BC";
+  const v=Math.abs(d)>=100?Math.round(Math.abs(d)):Math.abs(d).toFixed(1);
+  return '<span class="'+(up?"up":"down")+'">'+g+" "+v+"%</span>";
+}
+const dlq=d=>d===null||d===undefined?'<span class="flat">&mdash;</span>':dl(d);
+
+$("nav-client").textContent=D.client;
+$("nav-tag").textContent=D.period;
+$("ov-sub").textContent=D.period+" compared with "+D.comparedTo+". Data complete through "+D.dataThrough+".";
+
+$("kgrid").innerHTML=D.kMain.map((k,i)=>
+  '<div class="kcard'+(i>1?" alt":"")+'"><div class="klabel">'+esc(k.label)+'</div>'+
+  '<div class="kval tn">'+esc(k.value)+'</div><div class="kfoot">'+dlq(k.delta)+'</div></div>').join("");
+$("kgrid6").innerHTML=D.kSub.map((k,i)=>
+  '<div class="kmini"><div class="klabel">'+esc(k.label)+'</div>'+
+  '<div class="kval tn">'+esc(k.value)+'</div><div class="kfoot">'+dlq(k.delta)+'</div></div>').join("");
+
+/* ---------------- top 5 video cards ---------------- */
+$("wall").innerHTML=D.videos.slice(0,5).map((v,i)=>
+  '<article class="vc">'+
+    '<button class="vc-img" data-i="'+i+'" aria-label="Open video by '+esc(v.handle)+'">'+
+      '<img src="'+IMG_V+esc(v.id)+'.webp" alt="" loading="lazy">'+
+      '<span class="vc-rank'+(i<3?' g'+(i+1):'')+'">'+(i+1)+'</span><span class="vc-play"><i></i></span></button>'+
+    '<div class="vc-body">'+
+      '<div class="vc-top"><span class="vc-handle">@'+esc(v.handle)+'</span>'+
+      '<span class="vc-tag">'+esc(tagFor(v.handle))+'</span></div>'+
+      '<p class="vc-cap">'+esc(v.cap)+'</p>'+
+      '<div class="vc-sect">This month</div>'+
+      '<div class="vc-grid">'+
+        '<div><div class="vc-m-l">GMV</div><div class="vc-m-v hl tn">'+m0(v.gmv)+'</div></div>'+
+        '<div><div class="vc-m-l">Units</div><div class="vc-m-v tn">'+v.units+'</div></div>'+
+      '</div>'+
+      '<div class="vc-sect">Lifetime</div>'+
+      '<div class="vc-grid nb">'+
+        '<div><div class="vc-m-l">Views</div><div class="vc-m-v tn">'+nm(v.views)+'</div></div>'+
+        '<div><div class="vc-m-l">GMV</div><div class="vc-m-v tn">'+m0(v.lifeGmv)+'</div></div>'+
+        '<div><div class="vc-m-l">GPM</div><div class="vc-m-v tn">$'+gpm(v).toFixed(2)+'</div></div>'+
+        '<div><div class="vc-m-l">Likes</div><div class="vc-m-v tn">'+nm(v.likes)+'</div></div>'+
+      '</div>'+
+      '<div class="vc-prod"><img src="'+IMG_P+esc(v.pid)+'.jpg" alt="" loading="lazy">'+
+        '<span>'+esc(v.prod)+'</span></div>'+
+      '<div class="vc-foot"><span class="vc-date">'+esc(v.posted)+'</span>'+
+      '<a class="vc-link" href="https://www.tiktok.com/@'+esc(v.handle)+'/video/'+esc(v.id)+
+      '" target="_blank" rel="noopener">Open on TikTok</a></div>'+
+    '</div></article>').join("");
+
+/* ---------------- video modal ---------------- */
+const mv=$("mv"), mvBody=$("mv-body");
+function closeMv(){mv.classList.remove("on");mvBody.innerHTML="";document.body.style.overflow="";}
+function openMv(i){
+  const v=D.videos[i], x=D.detail[v.id];
+  const player = x && (x.localVideo||x.remoteVideo)
+    ? '<video id="mv-vid" controls playsinline poster="'+IMG_V+esc(v.id)+'.webp">'+
+      (x.localVideo?'<source src="'+esc(x.localVideo)+'" type="video/mp4">':'')+
+      (x.remoteVideo?'<source src="'+esc(x.remoteVideo)+'" type="video/mp4">':'')+
+      '</video>'
+    : '<iframe src="https://www.tiktok.com/embed/v2/'+encodeURIComponent(v.id)+
+      '" allow="encrypted-media;fullscreen" title="Video by @'+esc(v.handle)+'"></iframe>';
+  const box=(label,img,val)=>'<div class="mv-box">'+(img?'<img src="'+esc(img)+'" alt="">':'')+
+    '<div><div class="l">'+esc(label)+'</div><div class="v">'+esc(val)+'</div></div></div>';
+  const metric=(l,val)=>'<div><div class="mv-m-l">'+esc(l)+'</div><div class="mv-m-v tn">'+esc(val)+'</div></div>';
+
+  mvBody.innerHTML=
+   '<div class="mv-grid"><div class="mv-left">'+player+
+     '<p class="mv-warn" id="mv-warn" hidden>Hosted copy unavailable. '+
+     '<a href="https://www.tiktok.com/@'+esc(v.handle)+'/video/'+esc(v.id)+'" target="_blank" rel="noopener">Open on TikTok</a></p>'+
+   '</div><div class="mv-right">'+
+     '<div class="mv-head"><img class="mv-ava" src="'+IMG_A+esc(v.cid)+'.webp" alt="">'+
+       '<div><div class="mv-name">@'+esc(v.handle)+'</div>'+
+       '<div class="mv-sub">'+esc(x?x.creatorName:"")+
+       (x&&x.followers?' \u00b7 '+nm(x.followers)+' followers':'')+
+       ' \u00b7 posted '+esc(v.posted)+'</div></div>'+
+       '<span class="vc-tag" style="margin-left:auto">'+esc(tagFor(v.handle))+'</span></div>'+
+     '<div class="mv-sect-l">This month</div>'+
+     '<div class="mv-m two-up">'+metric("GMV",m2(v.gmv))+metric("Units",v.units)+'</div>'+
+     '<div class="mv-sect-l">Lifetime</div>'+
+     '<div class="mv-m">'+metric("Views",nm(v.views))+metric("GMV",m2(v.lifeGmv))+
+       metric("Units",nm(v.lifeUnits))+metric("GPM","$"+gpm(v).toFixed(2))+
+       metric("Likes",nm(v.likes))+'</div>'+
+     '<div class="mv-row">'+
+       box("Product",IMG_P+v.pid+".jpg",v.prod)+
+       box("Usage rights","",x?x.usageRights:"Unknown")+
+     '</div>'+
+     (x?'<div class="mv-h">Key idea</div><p class="mv-p">'+esc(x.keyIdea)+
+        ' <span class="chip" style="margin-left:6px">'+esc(x.sentiment)+'</span></p>'+
+        '<div class="mv-h">Hook</div><ul class="mv-list">'+
+          x.hooks.map(t=>'<li>'+esc(t)+'</li>').join("")+'</ul>'+
+        '<div class="mv-h">Selling points</div><ul class="mv-list">'+
+          x.points.map(t=>'<li>'+esc(t)+'</li>').join("")+'</ul>'+
+        '<div class="mv-h">Call to action</div><p class="mv-p">'+esc(x.cta)+'</p>'+
+        '<div class="mv-h">Transcript</div><div class="mv-tr">'+esc(x.transcript)+'</div>'
+      :'<p class="mv-p">Content analysis has not been generated for this video yet.</p>')+
+   '</div></div>';
+
+  const vid=$("mv-vid");
+  if(vid){vid.addEventListener("error",()=>{
+    const w=$("mv-warn"); if(w)w.hidden=false;
+    vid.outerHTML='<iframe src="https://www.tiktok.com/embed/v2/'+encodeURIComponent(v.id)+
+      '" allow="encrypted-media;fullscreen" title="Video by @'+esc(v.handle)+'"></iframe>';
+  },true);}
+  mv.classList.add("on");document.body.style.overflow="hidden";$("mv-x").focus();
+}
+document.querySelectorAll(".vc-img").forEach(b=>b.addEventListener("click",()=>openMv(+b.dataset.i)));
+$("vtable").addEventListener("click",e=>{
+  if(e.target.closest("a"))return;
+  const tr=e.target.closest("tr.clk"); if(tr)openMv(+tr.dataset.vi);
+});
+$("mv-x").addEventListener("click",closeMv);
+mv.addEventListener("click",e=>{if(e.target===mv)closeMv();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMv();});
+
+/* ---------------- videos 6 to 20 ---------------- */
+const rest=D.videos.slice(5);
+const restGmv=rest.reduce((a,v)=>a+v.gmv,0), restUnits=rest.reduce((a,v)=>a+v.units,0);
+$("vt-chips").innerHTML=
+  '<span class="chip">Combined GMV <b>'+m0(restGmv)+'</b></span>'+
+  '<span class="chip">Units sold <b>'+restUnits+'</b></span>';
+$("vtable").innerHTML=rest.map((v,i)=>
+  '<tr class="clk" data-vi="'+(i+5)+'"><td class="rank" data-v="'+(i+6)+'">'+(i+6)+'</td>'+
+  '<td><div class="vt-thumb-w"><img class="vt-thumb" src="'+IMG_V+esc(v.id)+'.webp" alt="" loading="lazy"></div></td>'+
+  '<td data-v="'+esc(v.handle)+'"><div class="vt-cre"><img class="vt-ava" src="'+IMG_A+esc(v.cid)+'.webp" alt="" loading="lazy">'+
+    '<div class="vt-h"><a href="https://www.tiktok.com/@'+esc(v.handle)+'/video/'+esc(v.id)+
+    '" target="_blank" rel="noopener">@'+esc(v.handle)+'</a>'+
+    '<div class="vt-sub">'+esc(v.posted)+'</div></div></div></td>'+
+  '<td><div class="vt-desc">'+esc(v.cap)+'</div></td>'+
+  '<td data-v="'+esc(v.prod)+'"><span class="clip">'+esc(v.prod)+'</span></td>'+
+  '<td class="r tn" data-v="'+v.gmv+'" style="font-weight:600">'+m2(v.gmv)+'</td>'+
+  '<td class="r tn" data-v="'+v.units+'">'+v.units+'</td>'+
+  '<td class="r tn" data-v="'+v.views+'">'+nm(v.views)+'</td>'+
+  '<td class="r tn" data-v="'+gpm(v).toFixed(2)+'">$'+gpm(v).toFixed(2)+'</td>'+
+  '<td class="r tn" data-v="'+v.lifeGmv+'" style="color:var(--muted)">'+m0(v.lifeGmv)+'</td></tr>').join("");
+$("v-note").innerHTML='<span class="ilab">What this means</span>'+D.videoNote;
+
+/* ---------------- creators ---------------- */
+const strip=(arr,el)=>$(el).innerHTML=arr.map(s=>
+  '<div class="scard'+(s.acc?" acc":"")+(s.tap?" tap":"")+'"'+(s.tap?' data-tap="'+s.tap+'"':'')+
+  '><div class="s-l">'+esc(s.label)+'</div>'+
+  '<div class="s-v tn">'+esc(s.value)+'</div>'+
+  '<div class="s-d">'+(s.delta===null?"":dl(s.delta))+'</div>'+
+  (s.more?'<div class="s-more">'+esc(s.more)+' &rsaquo;</div>':'')+'</div>').join("");
+strip(D.strip,"strip"); strip(D.funnel,"funnel");
+const R=D.rights;
+strip([
+  {label:"Videos the brand can reuse",value:nm(R.total),acc:true},
+  {label:"Added this period",         value:nm(R.newThisPeriod)},
+  {label:"Terms",                     value:R.terms},
+  {label:"Used in a paid ad",         value:nm(R.linkedToAds)},
+  {label:"Expired",                   value:nm(R.expired)}
+],"rights-strip");
+
+$("lib-chips").innerHTML='<span class="chip">Top 12 by revenue</span>'+
+  '<span class="chip">Combined <b>'+m0(R.top12Gmv)+'</b></span>'+
+  '<span class="chip">Views <b>'+nm(R.top12Views)+'</b></span>';
+
+$("libwall").innerHTML=R.wall.map(v=>
+  '<a class="libcard" href="https://www.tiktok.com/@'+esc(v.handle)+'/video/'+esc(v.id)+
+  '" target="_blank" rel="noopener">'+
+  '<div class="libthumb"><img src="'+IMG_V+esc(v.id)+'.webp" alt="" loading="lazy">'+
+    '<span class="libsrc '+esc(v.src)+'">'+esc(v.src)+'</span></div>'+
+  '<div class="libmeta"><div class="libgmv tn">'+m0(v.gmv)+'</div>'+
+    '<div class="libhandle">@'+esc(v.handle)+'</div>'+
+    '<div class="libviews tn">'+nm(v.views)+' views</div></div></a>').join("");
+
+(function(){
+  const rows=[{n:"Contest",v:R.contest,c:"#fcd39a"},{n:"Spark code",v:R.spark,c:"#79c9a4"}];
+  $("rights-source").innerHTML=rows.map(r=>
+    '<div class="srcrow"><span class="srcname">'+esc(r.n)+'</span>'+
+    '<span class="srcbar"><i style="width:'+(r.v/R.total*100).toFixed(1)+'%;background:'+r.c+'"></i></span>'+
+    '<span class="srcval">'+nm(r.v)+' <span style="color:var(--muted-lt);font-weight:400">'+
+    (r.v/R.total*100).toFixed(0)+'%</span></span></div>').join("")+
+    '<p class="srcsub">Contest entries and spark codes on paid collaborations. Nothing in this library was bought as a standalone licensing fee.</p>';
+})();
+
+(function(){
+  const pct=R.total?R.linkedToAds/R.total*100:0;
+  $("rights-usage").innerHTML=
+    '<div class="usebig tn" style="color:'+(R.linkedToAds?"var(--navy)":"var(--neg)")+'">'+
+      nm(R.linkedToAds)+' of '+nm(R.total)+'</div>'+
+    '<p class="usesub">licensed videos have been uploaded to Meta or linked to a live ad. The rest is paid-for content sitting unused.</p>'+
+    '<div class="usemeter"><i style="width:'+Math.max(pct,0.6).toFixed(1)+'%"></i></div>'+
+    '<div class="uselab"><span>'+pct.toFixed(1)+'% in use</span><span>'+nm(R.total-R.linkedToAds)+' available</span></div>';
+})();
+
+$("rights-note").innerHTML='<span class="ilab">What this means</span>'+R.note;
+
+const LT={c:0,v:0,g:0,i:0,rq:0,sh:0};
+D.levels.forEach(l=>{LT.c+=l.creators;LT.v+=l.videos;LT.g+=l.gmv;LT.i+=l.invites;LT.rq+=l.req;LT.sh+=l.ship;});
+const pc=(a,b)=>b?'<span class="pct">'+(a/b*100).toFixed(1)+'%</span>':'';
+$("levels").innerHTML=D.levels.map(l=>
+  '<tr><td><span class="lv-b" style="background:'+l.color+'">'+l.lv+'</span>'+esc(l.range)+'</td>'+
+  '<td class="r tn">'+nm(l.creators)+pc(l.creators,LT.c)+'</td>'+
+  '<td class="r tn">'+l.videos+pc(l.videos,LT.v)+'</td>'+
+  '<td class="r tn">'+m2(l.gmv)+pc(l.gmv,LT.g)+'</td>'+
+  '<td class="r tn">'+nm(l.invites)+'</td><td class="r tn">'+nm(l.req)+'</td>'+
+  '<td class="r tn">'+nm(l.ship)+'</td></tr>').join("");
+$("levels-foot").innerHTML='<tr><td>Total</td><td class="r tn">'+nm(LT.c)+'</td><td class="r tn">'+
+  LT.v+'</td><td class="r tn">'+m2(LT.g)+'</td><td class="r tn">'+nm(LT.i)+'</td><td class="r tn">'+
+  nm(LT.rq)+'</td><td class="r tn">'+nm(LT.sh)+'</td></tr>';
+
+/* concentration traffic light: top 3 creators as a share of affiliate GMV */
+(function(){
+  const top3=D.creators.slice(0,3).reduce((a,c)=>a+c.gmv,0);
+  const p=top3/D.affiliateGmv*100;
+  const b=D.concentrationBands;
+  const cls=p<b.green?"g":(p<=b.amber?"a":"r");
+  const word=cls==="g"?"Healthy spread":(cls==="a"?"Watch this":"Highly concentrated");
+  $("cr-chips").innerHTML=
+    '<span class="chip">Creators with revenue <b>'+D.creators.length+'</b></span>'+
+    '<span class="chip '+cls+'"><i class="dot"></i>Top 3 creators <b>'+p.toFixed(1)+'%</b> of GMV \u00b7 '+word+'</span>';
+})();
+
+const crMax=D.creators[0].gmv;
+$("creators-tb").innerHTML=D.creators.map((c,i)=>{
+  const sh=c.gmv/D.affiliateGmv*100;
+  return '<tr><td class="rank" data-v="'+(i+1)+'">'+(i+1)+'</td>'+
+  '<td data-v="'+esc(c.handle)+'"><div class="vt-cre">'+
+    '<img class="vt-ava" src="'+IMG_A+esc(c.cid||"")+'.webp" alt="" loading="lazy">'+
+    '<span class="vt-h">@'+esc(c.handle)+'</span></div></td>'+
+  '<td><span class="vc-tag">'+esc(tagFor(c.handle))+'</span></td>'+
+  '<td class="r tn" data-v="'+c.gmv+'" style="font-weight:600">'+m2(c.gmv)+'</td>'+
+  '<td class="r tn" data-v="'+sh.toFixed(1)+'">'+sh.toFixed(1)+'%</td>'+
+  '<td class="r tn" data-v="'+c.videos+'">'+c.videos+'</td>'+
+  '<td class="r tn" data-v="'+(c.videos?c.gmv/c.videos:0)+'">'+
+    (c.videos?m0(c.gmv/c.videos):'<span class="flat">&mdash;</span>')+'</td>'+
+  '<td class="r" data-v="'+(c.delta===null?-99999:c.delta)+'">'+dl(c.delta)+'</td></tr>';
+}).join("");
+
+/* ---------------- products ---------------- */
+$("products-tb").innerHTML=D.products.map(p=>{
+  const tot=p.aff+p.card, ap=tot?p.aff/tot*100:0;
+  return '<tr><td data-v="'+esc(p.name)+'"><div class="pr-cell"><img class="pr-img" src="'+IMG_P+esc(p.id)+'.jpg" alt="" loading="lazy">'+
+    '<div><div class="pr-name">'+esc(p.name)+'</div>'+
+    '<div class="pr-meta">'+(tot?Math.round(ap)+"% affiliate":"no affiliate sales")+'</div></div></div></td>'+
+    '<td class="r tn" data-v="'+p.gmv+'" style="font-weight:600">'+m2(p.gmv)+'</td>'+
+    '<td><div class="splitwrap"><div class="split"><i style="width:'+ap.toFixed(1)+'%;background:var(--orange)"></i>'+
+      '<i style="width:'+(100-ap).toFixed(1)+'%;background:var(--navy-3)"></i></div>'+'<div class="tip"><div class="tt">'+esc(p.name)+'</div>'+'<div class="tr"><span><i class="tk" style="background:var(--orange)"></i>Affiliate video</span><span class="tv">'+Math.round(ap)+'% \u00b7 '+m2(p.aff)+'</span></div>'+'<div class="tr"><span><i class="tk" style="background:var(--navy-3)"></i>Product card</span><span class="tv">'+Math.round(100-ap)+'% \u00b7 '+m2(p.card)+'</span></div></div></div></td>'+
+    '<td class="r tn" data-v="'+p.units+'">'+p.units+'</td>'+
+    '<td class="r tn" data-v="'+p.refund+'"'+(p.refund>20?' style="color:var(--neg);font-weight:600"':'')+'>'+p.refund.toFixed(1)+'%</td>'+
+    '<td class="r tn" data-v="'+p.imp+'">'+nm(p.imp)+'</td>'+
+    '<td class="r tn" data-v="'+p.ctr+'">'+p.ctr.toFixed(2)+'%</td>'+
+    '<td class="r tn" data-v="'+p.videos+'">'+p.videos+'</td>'+
+    '<td class="r tn" data-v="'+p.req+'">'+p.req+'</td>'+
+    '<td class="r tn" data-v="'+p.stock+'" style="color:var(--muted)">'+nm(p.stock)+'</td></tr>';
+}).join("");
+$("p-note").innerHTML='<span class="ilab">What this means</span>'+D.productNote;
+
+/* ---------------- flat fee / paid ---------------- */
+$("flatfee").innerHTML=D.flatFee.rows.map(f=>
+  '<tr><td style="font-weight:600">@'+esc(f.handle)+'</td><td class="r tn">'+f.videos+'</td>'+
+  '<td class="r tn">'+m0(f.fee)+'</td><td class="r tn">'+m0(f.fee/f.videos)+'</td>'+
+  '<td class="r tn">'+m2(f.gmv)+'</td>'+
+  '<td class="r tn" style="font-weight:600">'+(f.gmv/f.fee).toFixed(2)+'x</td></tr>').join("");
+$("ff-note").textContent=D.flatFee.placeholder
+  ?"Flat-fee figures are placeholder. This table and the Commission / Flat-fee tag both read from the Flat-fee tab of the internal goals sheet, which does not exist yet. Until it does, every creator is tagged Commission only, because Euka does not record which creators are on a flat fee."
+  :"";
+
+/* ---------------- paid ---------------- */
+(function(){
+  const P=D.paid, C=P.campaigns;
+  const tot=C.reduce((a,c)=>({cost:a.cost+c.cost,orders:a.orders+c.orders,rev:a.rev+c.rev}),
+    {cost:0,orders:0,rev:0});
+  const roi=tot.rev/tot.cost, cpo=tot.cost/tot.orders;
+  $("paid-kpis").innerHTML=[
+    {l:"Ad spend",      v:m2(tot.cost)},
+    {l:"Attributed revenue", v:m2(tot.rev)},
+    {l:"Blended ROI",   v:roi.toFixed(2)+"x"},
+    {l:"Cost per order",v:m2(cpo)}
+  ].map((k,i)=>'<div class="kcard'+(i>1?" alt":"")+'"><div class="klabel">'+esc(k.l)+'</div>'+
+    '<div class="kval tn">'+esc(k.v)+'</div><div class="kfoot"><span class="flat">'+
+    (i===0?nm(tot.orders)+" orders":i===1?"TikTok Ads attribution":i===2?"gross revenue over spend":"across "+C.length+" campaigns")+
+    '</span></div></div>').join("");
+  $("paid-chips").innerHTML='<span class="chip">Ad account <b>'+esc(P.advertiser)+'</b></span>'+
+    '<span class="chip">Campaigns with spend <b>'+C.length+'</b></span>';
+  $("paid-tb").innerHTML=C.map(c=>{
+    const hit=c.roi/c.target, share=c.cost/tot.cost*100;
+    const cls=hit>=.95?"g":hit>=.8?"a":"r";
+    return '<tr><td data-v="'+esc(c.name)+'" style="font-weight:600">'+esc(c.name)+'</td>'+
+      '<td class="r tn" data-v="'+c.target+'">'+c.target.toFixed(1)+'x</td>'+
+      '<td class="r tn" data-v="'+c.roi+'" style="font-weight:600">'+c.roi.toFixed(2)+'x</td>'+
+      '<td data-v="'+hit+'"><span class="chip '+cls+'"><i class="dot"></i>'+Math.round(hit*100)+'% of target</span></td>'+
+      '<td class="r tn" data-v="'+c.cost+'">'+m2(c.cost)+'</td>'+
+      '<td class="r tn" data-v="'+share+'">'+share.toFixed(1)+'%</td>'+
+      '<td class="r tn" data-v="'+c.orders+'">'+c.orders+'</td>'+
+      '<td class="r tn" data-v="'+c.rev+'">'+m2(c.rev)+'</td>'+
+      '<td class="r tn" data-v="'+c.cpo+'">'+m2(c.cpo)+'</td></tr>';
+  }).join("");
+  $("paid-foot").innerHTML='<tr><td>Total</td><td class="r"></td>'+
+    '<td class="r tn">'+roi.toFixed(2)+'x</td><td></td>'+
+    '<td class="r tn">'+m2(tot.cost)+'</td><td class="r tn">100%</td>'+
+    '<td class="r tn">'+nm(tot.orders)+'</td><td class="r tn">'+m2(tot.rev)+'</td>'+
+    '<td class="r tn">'+m2(cpo)+'</td></tr>';
+  $("paid-note").innerHTML='<span class="ilab">What this means</span>'+P.note+
+    ' <span style="display:block;margin-top:8px;color:var(--muted-lt);font-size:12px">'+esc(P.otherAccounts)+'</span>';
+})();
+
+/* ---------------- charts ---------------- */
+function gridY(pl,pr,W,y,vals,fmt,fill){
+  return vals.map(v=>'<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#edf0f2"/>'+
+    '<text x="'+(pl-9)+'" y="'+(y(v)+4)+'" text-anchor="end" font-size="10.5" fill="'+fill+'">'+fmt(v)+'</text>').join("");
+}
+(function(){
+  const d=D.activity,W=560,H=210,pl=42,pr=14,pt=14,pb=28;
+  const iw=W-pl-pr,ih=H-pt-pb;
+  const top=Math.ceil(Math.max(...d.map(x=>Math.max(x.nw,x.rt)))/50)*50;
+  const x=i=>pl+(iw/(d.length-1))*i, y=v=>pt+ih-(v/top)*ih;
+  const ticks=[0,1,2,3,4].map(t=>top/4*t);
+  const line=(k,c)=>'<path d="'+d.map((o,i)=>(i?"L":"M")+x(i)+" "+y(o[k])).join(" ")+
+    '" fill="none" stroke="'+c+'" stroke-width="2.5" stroke-linejoin="round"/>'+
+    d.map((o,i)=>'<circle cx="'+x(i)+'" cy="'+y(o[k])+'" r="3.2" fill="'+c+'"/>').join("");
+  const hits=d.map((o,i)=>'<rect class="hitbox" data-k="'+i+'" x="'+(x(i)-22)+
+    '" y="'+pt+'" width="44" height="'+ih+'"/>').join("");
+  $("chart-active").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="New and returning creators by month">'+
+    gridY(pl,pr,W,y,ticks,v=>Math.round(v),"#98a2ab")+line("rt","#3a4a58")+line("nw","#faa22a")+
+    d.map((o,i)=>'<text x="'+x(i)+'" y="'+(H-9)+'" text-anchor="middle" font-size="10.5" fill="#68727c">'+o.m+'</text>').join("")+
+    hits+'</svg>';
+  const tip=$("tip-active");
+  $("chart-active").addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  $("chart-active").querySelectorAll(".hitbox").forEach(r=>{
+    r.addEventListener("mouseenter",()=>{
+      const o=d[+r.dataset.k];
+      tip.innerHTML='<div class="tt">'+o.m+" 2026"+'</div>'+
+        '<div class="tr"><span><i class="tk" style="background:#faa22a"></i>New</span><span class="tv">'+o.nw+'</span></div>'+
+        '<div class="tr"><span><i class="tk" style="background:#3a4a58"></i>Returning</span><span class="tv">'+o.rt+'</span></div>'+
+        '<div class="tr"><span>Active total</span><span class="tv">'+(o.nw+o.rt)+'</span></div>';
+      tip.classList.add("on");
+    });
+    r.addEventListener("mousemove",e=>{
+      const b=$("chart-active").getBoundingClientRect();
+      tip.style.left=Math.min(b.width-190,Math.max(0,e.clientX-b.left+14))+"px";
+      tip.style.top=Math.max(0,e.clientY-b.top-20)+"px";
+    });
+    r.addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  });
+})();
+(function(){
+  const cols=["M0","M1","M2","M3","M4","M5"];
+  let h='<thead><tr><th class="l">Cohort</th><th>New</th>'+cols.map(c=>'<th>'+c+'</th>').join("")+'</tr></thead><tbody>';
+  D.cohort.forEach(r=>{
+    h+='<tr><td class="l">'+esc(r.m)+'</td><td class="n tn">'+r.n+'</td>';
+    r.r.forEach(v=>{
+      if(v===null){h+='<td class="n">\u2013</td>';}
+      else{const a=(0.12+0.85*(v/100)).toFixed(2);
+        h+='<td class="on" style="background:rgba(250,162,42,'+a+')">'+(v===100?"100%":v.toFixed(1)+"%")+'</td>';}
+    });
+    h+='</tr>';
+  });
+  $("cohort").innerHTML=h+'</tbody>';
+})();
+(function(){
+  const d=D.trend,W=1000,H=280,pl=62,pr=54,pt=16,pb=34;
+  const iw=W-pl-pr,ih=H-pt-pb;
+  const maxG=Math.max(...d.map(x=>x.gmv))*1.14, maxV=Math.max(...d.map(x=>x.videos))*1.14;
+  const bw=iw/d.length*0.42, cx=i=>pl+(iw/d.length)*(i+0.5);
+  const yG=v=>pt+ih-(v/maxG)*ih, yV=v=>pt+ih-(v/maxV)*ih;
+  const ticks=[0,1,2,3,4].map(t=>maxG/4*t);
+  const right=ticks.map(v=>'<text x="'+(W-pr+9)+'" y="'+(yG(v)+4)+'" font-size="10.5" fill="#98a2ab">'+
+    Math.round(v/maxG*maxV)+'</text>').join("");
+  const bars=d.map((x,i)=>'<rect x="'+(cx(i)-bw/2)+'" y="'+yG(x.gmv)+'" width="'+bw+
+    '" height="'+(pt+ih-yG(x.gmv))+'" fill="#fbc madeup" rx="3"/>').join("").replace(/#fbc madeup/g,"#fcd39a");
+  const ln='<path d="'+d.map((x,i)=>(i?"L":"M")+cx(i)+" "+yV(x.videos)).join(" ")+
+    '" fill="none" stroke="#6b7b8a" stroke-width="1.8"/>'+
+    d.map((x,i)=>'<circle cx="'+cx(i)+'" cy="'+yV(x.videos)+'" r="2.6" fill="#6b7b8a"/>').join("");
+  const hits=d.map((x,i)=>'<rect class="hitbox" data-k="'+i+'" x="'+(cx(i)-bw/2-6)+'" y="'+pt+
+    '" width="'+(bw+12)+'" height="'+ih+'"/>').join("");
+  $("chart-trend").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Creator video revenue and videos published by month">'+
+    gridY(pl,pr,W,yG,ticks,v=>"$"+Math.round(v/1000)+"k","#98a2ab")+right+bars+ln+
+    d.map((x,i)=>'<text x="'+cx(i)+'" y="'+(H-10)+'" text-anchor="middle" font-size="10.5" fill="#68727c">'+x.m+'</text>').join("")+
+    hits+'</svg>';
+  $("tr-sub").textContent="Videos published shown as the line, right axis";
+  const tip=$("tip-trend");
+  $("chart-trend").addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  $("chart-trend").querySelectorAll(".hitbox").forEach(r=>{
+    r.addEventListener("mouseenter",()=>{
+      const x=d[+r.dataset.k];
+      tip.innerHTML='<div class="tt">'+x.m+'</div>'+
+        '<div class="tr"><span><i class="tk" style="background:#fcd39a"></i>Creator video revenue</span><span class="tv">'+m2(x.gmv)+'</span></div>'+
+        '<div class="tr"><span><i class="tk" style="background:#6b7b8a"></i>Videos published</span><span class="tv">'+x.videos+'</span></div>'+
+        '<div class="tr"><span>Revenue per video</span><span class="tv">'+m2(x.gmv/x.videos)+'</span></div>';
+      tip.classList.add("on");
+    });
+    r.addEventListener("mousemove",e=>{
+      const b=$("chart-trend").getBoundingClientRect();
+      tip.style.left=Math.min(b.width-210,Math.max(0,e.clientX-b.left+14))+"px";
+      tip.style.top=Math.max(0,e.clientY-b.top-20)+"px";
+    });
+    r.addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  });
+})();
+/* ---- Amazon halo: signal cards + stacked chart ---- */
+(function(){
+  const d=D.halo;
+  const closed=d.filter(x=>!x.partial);
+  function r2(xs,ys){
+    const n=xs.length; if(n<3) return null;
+    const mx=xs.reduce((a,b)=>a+b,0)/n, my=ys.reduce((a,b)=>a+b,0)/n;
+    let sxy=0,sxx=0,syy=0;
+    for(let k=0;k<n;k++){sxy+=(xs[k]-mx)*(ys[k]-my);sxx+=(xs[k]-mx)**2;syy+=(ys[k]-my)**2;}
+    if(!sxx||!syy) return null;
+    const r=sxy/Math.sqrt(sxx*syy); return r*r;
+  }
+  const full=r2(d.map(x=>x.views),d.map(x=>x.amazon));
+  const safe=r2(closed.map(x=>x.views),closed.map(x=>x.amazon));
+  const band=v=>v===null?["Not enough data","sig-none"]
+    :v>=.50?["Strong","sig-strong"]:v>=.15?["Moderate","sig-moderate"]
+    :v>=.05?["Weak","sig-weak"]:["Very weak","sig-weak"];
+  /* guardrail: only publish a rating that survives removing part-month data */
+  const survives = full!==null && safe!==null && safe>=.15 && full>=.15;
+  const shown = survives?full:safe;
+  const [word,cls] = survives?band(full):["Building baseline","sig-none"];
+  const pctTxt = shown===null?"\u2014":(shown*100).toFixed(1)+"%";
+  $("halo4").innerHTML=
+    '<div class="hcard"><div class="hl">Amazon sales, period</div>'+
+      '<div class="hv">'+m0(d.reduce((a,b)=>a+b.amazon,0))+'</div>'+
+      '<div class="hs">across '+d.length+' months</div></div>'+
+    '<div class="hcard"><div class="hl">TikTok Shop sales, period</div>'+
+      '<div class="hv">'+m0(d.reduce((a,b)=>a+b.sales,0))+'</div>'+
+      '<div class="hs">same months, for comparison</div></div>'+
+    '<div class="hcard"><div class="hl">TikTok to Amazon sales link</div>'+
+      '<div class="hv '+cls+'">'+word+'</div>'+
+      '<div class="hs">'+(survives?"Holds when part-months are removed":"Rating withheld until it holds without part-month data")+'</div></div>'+
+    '<div class="hcard"><div class="hl">TikTok explains</div>'+
+      '<div class="hv">'+pctTxt+'</div>'+
+      '<div class="hs">of Amazon sales movement, '+closed.length+' closed months</div></div>';
+  $("halo-scope").textContent=D.haloScope;
+
+  const W=1000,H=300,pl=64,pr=60,pt=18,pb=38,iw=W-pl-pr,ih=H-pt-pb;
+  const maxA=Math.max(...d.map(x=>x.amazon))*1.12;
+  const maxV=Math.max(...d.map(x=>x.views))*1.12;
+  const maxS=Math.max(...d.map(x=>x.sales))*1.12;
+  const bw=iw/d.length*0.5, cx=k=>pl+(iw/d.length)*(k+0.5);
+  const yA=v=>pt+ih-(v/maxA)*ih, yV=v=>pt+ih-(v/maxV)*ih, yS=v=>pt+ih-(v/maxS)*ih*0.55;
+  let g="";
+  for(let t=0;t<=4;t++){const v=maxA/4*t;
+    g+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+yA(v)+'" y2="'+yA(v)+'" stroke="#edf0f2"/>'+
+       '<text x="'+(pl-9)+'" y="'+(yA(v)+4)+'" text-anchor="end" font-size="10.5" fill="#98a2ab">$'+Math.round(v/1000)+'k</text>'+
+       '<text x="'+(W-pr+9)+'" y="'+(yA(v)+4)+'" font-size="10.5" fill="#98a2ab">'+Math.round(v/maxA*maxV/1000)+'k</text>';}
+  /* stacked column: TikTok Shop sales sit inside the Amazon column */
+  const bars=d.map((x,k)=>{
+    const top=yA(x.amazon), hgt=pt+ih-top;
+    const inner=(x.sales/maxS)*hgt*0.42;
+    return '<rect x="'+(cx(k)-bw/2)+'" y="'+top+'" width="'+bw+'" height="'+hgt+'" fill="#4a5b6b" rx="3"'+
+      (x.partial?' opacity="0.55"':'')+'/>'+
+      '<rect x="'+(cx(k)-bw/2)+'" y="'+(pt+ih-inner)+'" width="'+bw+'" height="'+inner+'" fill="#1e6b4e" rx="3"'+
+      (x.partial?' opacity="0.55"':'')+'/>';
+  }).join("");
+  const ln='<path d="'+d.map((x,k)=>(k?"L":"M")+cx(k)+" "+yV(x.views)).join(" ")+
+    '" fill="none" stroke="#faa22a" stroke-width="2.5"/>'+
+    d.map((x,k)=>'<circle cx="'+cx(k)+'" cy="'+yV(x.views)+'" r="3.4" fill="#faa22a"/>').join("");
+  const lab=d.map((x,k)=>'<text x="'+cx(k)+'" y="'+(H-12)+'" text-anchor="middle" font-size="10.5" fill="'+
+    (x.partial?"#98a2ab":"#68727c")+'">'+x.m+(x.partial?"*":"")+'</text>').join("");
+  const hits=d.map((x,k)=>'<rect class="hitbox" data-k="'+k+'" x="'+(cx(k)-bw/2-6)+'" y="'+pt+
+    '" width="'+(bw+12)+'" height="'+ih+'"/>').join("");
+  $("chart-halo").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Amazon sales with TikTok activity">'+
+    g+bars+ln+lab+hits+'</svg>';
+
+  const tip=$("tip-halo");
+  $("chart-halo").addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  $("chart-halo").querySelectorAll(".hitbox").forEach(r=>{
+    r.addEventListener("mouseenter",e=>{
+      const x=d[+r.dataset.k];
+      tip.innerHTML='<div class="tt">'+x.m+' 2026'+(x.partial?" (part month)":"")+'</div>'+
+        '<div class="tr"><span><i class="tk" style="background:#4a5b6b"></i>Amazon sales</span><span class="tv">'+m0(x.amazon)+'</span></div>'+
+        '<div class="tr"><span><i class="tk" style="background:#faa22a"></i>TikTok views</span><span class="tv">'+nm(Math.round(x.views))+'</span></div>'+
+        '<div class="tr"><span><i class="tk" style="background:#1e6b4e"></i>TikTok Shop sales</span><span class="tv">'+m0(x.sales)+'</span></div>';
+      tip.classList.add("on");
+    });
+    r.addEventListener("mousemove",e=>{
+      const b=$("chart-halo").getBoundingClientRect();
+      tip.style.left=Math.min(b.width-200,Math.max(0,e.clientX-b.left+14))+"px";
+      tip.style.top=Math.max(0,e.clientY-b.top-20)+"px";
+    });
+    r.addEventListener("mouseleave",()=>tip.classList.remove("on"));
+  });
+})();
+$("halo-note").innerHTML='<span class="ilab">How to read this</span>'+D.haloNote;
+
+/* ---------------- takeaways ---------------- */
+$("hc-e").textContent=D.hero.e;
+$("hc-t").innerHTML=D.hero.t;
+$("hc-b").innerHTML=D.hero.b;
+$("hc-s").innerHTML=D.hero.s.map(s=>'<div><div class="hc-s-v tn">'+esc(s.v)+
+  '</div><div class="hc-s-l">'+esc(s.l)+'</div></div>').join("");
+$("tcards").innerHTML=D.takeaways.map((t,i)=>
+  '<article class="tcard t'+(i%4)+'"><span class="tc-tag">'+esc(t.tag)+'</span>'+
+  '<div class="tc-t">'+esc(t.t)+'</div><p class="tc-b">'+t.b+'</p>'+
+  '<div class="tc-act"><span class="l">Recommended action</span>'+t.act+'</div>'+
+  '<div class="tc-impact"><span class="l">Expected impact</span>'+t.impact+'</div>'+
+  '</article>').join("");
+
+if(D.footNote){$("f-src").textContent=D.footNote;}else{$("f-src").remove();}
+$("f-gen").textContent=D.footLine;
+
+/* ---------------- creator-data takeaways ---------------- */
+$("mini-e").textContent=D.mini.e;
+$("mini-t").innerHTML=D.mini.t;
+$("mini-cards").innerHTML=D.mini.cards.map((c,i)=>
+  '<article class="tcard t'+(i%2?2:1)+'"><span class="tc-tag">'+esc(c.tag)+'</span>'+
+  '<div class="tc-t">'+esc(c.t)+'</div><p class="tc-b">'+c.b+'</p>'+
+  '<div class="tc-act"><span class="l">What it means</span>'+esc(c.q)+'</div></article>').join("");
+
+/* ---------------- churn risk detail ---------------- */
+document.querySelectorAll('.scard[data-tap="churn"]').forEach(el=>{
+  el.addEventListener("click",()=>{
+    const c=D.churn;
+    $("mv-body").innerHTML='<div class="mv-right" style="padding:26px 30px 30px">'+
+      '<div class="hc-e" style="color:var(--orange-ink)">Churn risk</div>'+
+      '<div style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px">'+
+        nm(c.count)+' creators did not post again</div>'+
+      '<p class="mv-p" style="color:var(--muted);margin-bottom:18px;max-width:64ch">'+
+        'Counted as creators who posted in the previous month and did not post in this one. '+
+        'It is the single largest threat to next month\'s revenue, because videos land as GMV the month after they post.</p>'+
+      '<ul class="ilist" style="border-top:1px solid var(--line)">'+
+        c.rows.map(r=>'<li style="display:flex;justify-content:space-between;gap:20px;padding:11px 0;'+
+        'border-bottom:1px solid var(--line-lt);font-size:13px"><span>'+esc(r.k)+
+        '</span><span class="tn" style="font-weight:600">'+esc(r.v)+'</span></li>').join("")+'</ul>'+
+      '<div class="insight" style="margin-top:18px"><span class="ilab">How this is counted</span>'+esc(c.note)+'</div>'+
+      '<button class="more" id="churn-dl" style="margin-top:16px;border:1px solid var(--line);border-radius:6px">'+
+      'Download the list as CSV ('+nm(c.count)+' creators)</button>'+
+      '</div>';
+    $("churn-dl").addEventListener("click",()=>{
+      const rows=D.churn.csv.split("|").map(r=>r.split(","));
+      const csv="handle,august_videos,august_gmv,last_post\n"+rows.map(r=>r.join(",")).join("\n");
+      const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+      const a=document.createElement("a");
+      a.href=url; a.download="churn-risk-"+D.client.toLowerCase().replace(/[^a-z0-9]+/g,"-")+".csv";
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+    $("mv").classList.add("on");document.body.style.overflow="hidden";$("mv-x").focus();
+  });
+});
+
+/* ---------------- collapsible tables ---------------- */
+const collapsers=[];
+document.querySelectorAll(".more").forEach(btn=>{
+  const tb=$(btn.dataset.target), show=+btn.dataset.show, label=btn.textContent;
+  let open=false;
+  const apply=()=>{
+    Array.from(tb.rows).forEach((r,i)=>r.classList.toggle("hide-row",!open&&i>=show));
+    btn.textContent=open?"Collapse":label;
+  };
+  if(tb.rows.length<=show){btn.remove();return;}
+  apply(); collapsers.push(apply);
+  btn.addEventListener("click",()=>{open=!open;apply();});
+});
+
+/* ---------------- sortable tables ---------------- */
+document.querySelectorAll("table[data-sortable]").forEach(tbl=>{
+  const heads=Array.from(tbl.tHead.rows[0].cells);
+  const body=tbl.tBodies[0];
+  heads.forEach((th,col)=>{
+    if(!th.classList.contains("s"))return;
+    let dir=0;
+    th.addEventListener("click",()=>{
+      heads.forEach(h=>h.classList.remove("asc","desc"));
+      dir=dir===1?-1:1;
+      th.classList.add(dir===1?"asc":"desc");
+      const rows=Array.from(body.rows);
+      const key=r=>{
+        const c=r.cells[col]; if(!c)return "";
+        const raw=c.dataset.v!==undefined?c.dataset.v:c.textContent.trim();
+        const n=parseFloat(raw);
+        return (raw!==""&&!isNaN(n)&&/^-?[\d.]+$/.test(String(raw)))?n:String(raw).toLowerCase();
+      };
+      rows.sort((a,b)=>{
+        const x=key(a),y=key(b);
+        if(typeof x==="number"&&typeof y==="number")return (x-y)*dir;
+        return String(x).localeCompare(String(y))*dir;
+      });
+      rows.forEach(r=>body.appendChild(r));
+      collapsers.forEach(f=>f());
+    });
+  });
+});
+
+
+/* ---------------- scrollspy ---------------- */
+(function(){
+  const links=Array.from(document.querySelectorAll(".nav-links a"));
+  const map={}; links.forEach(a=>{const s=$(a.getAttribute("href").slice(1)); if(s)map[s.id]=a;});
+  const secs=Object.keys(map).map(id=>$(id));
+  const set=id=>links.forEach(a=>a.classList.toggle("on",a===map[id]));
+  if(!("IntersectionObserver" in window)){set(secs[0].id);return;}
+  const seen=new Map();
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>seen.set(e.target.id,e.intersectionRatio));
+    let best=null,bv=-1;
+    seen.forEach((v,k)=>{if(v>bv){bv=v;best=k;}});
+    if(best&&bv>0)set(best);
+  },{rootMargin:"-68px 0px -55% 0px",threshold:[0,.1,.25,.5,1]});
+  secs.forEach(s=>io.observe(s));
+  set(secs[0].id);
+})();
+
+</script>
+</body>
+</html>
